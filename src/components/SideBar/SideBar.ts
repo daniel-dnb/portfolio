@@ -1,25 +1,50 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface ContainerType {
+  isMenuActive: boolean
+}
+
+export const Container = styled.div<ContainerType>`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 300px;
   height: 100vh;
-  padding-top: 60px;
   position: fixed;
   color: ${props => props.theme.colors.text};
   background-color: ${props => props.theme.colors.background};
 
   h1 {
-    font: 700 28px Arvo, sans-serif;
-    margin-top: 25px;
+    font: 700 2.8rem Arvo, sans-serif;
+    margin-top: 2.5rem;
     color: ${props => props.theme.colors.primary};
   }
-  .h1--sublinhado {
+  .h1-sublinhado {
     width: 200px;
     height: 2px;
     background-color: ${props => props.theme.colors.primary};
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mobile-menu {
+    cursor: pointer;
+    display: none;
+  }
+
+  .mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: ${props => props.theme.colors.primary};
+    margin: 8px;
+  }
+
+  .avatar {
+    margin-top: 60px;
   }
 
   .navigation {
@@ -29,7 +54,7 @@ export const Container = styled.div`
   }
   .navigation li {
     list-style-type: none;
-    font: 500 25px Ubunto, sans-serif;
+    font: 400 24px Ubuntu, sans-serif;
     padding-top: 13px;
     padding-bottom: 13px;
     border-top: 1px solid #313131;
@@ -43,6 +68,7 @@ export const Container = styled.div`
     a {
       text-decoration: none;
       color: ${props => props.theme.colors.text};
+      transition: 0.3s;
       :hover {
         color: ${props => props.theme.colors.primary};
         filter: brightness(0.9);
@@ -56,8 +82,8 @@ export const Container = styled.div`
   }
 
   .socialMedia {
-    margin-top: 120px;
     width: 160px;
+    margin-top: 120px;
     display: flex;
     justify-content: space-between;
     a {
@@ -66,6 +92,56 @@ export const Container = styled.div`
     }
     a:hover path {
       fill: ${props => props.theme.colors.primary};
+    }
+  }
+
+  @media (max-width: 850px) {
+    position: stick;
+    width: 100vw;
+    min-width: 356px;
+    height: ${props => (props.isMenuActive ? '100vh' : '80px')};
+    transition: height 0.8s ease-in-out;
+    overflow: hidden;
+    z-index: 9;
+
+    .menu {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      padding-left: 5%;
+      padding-right: 4vw;
+      h1 {
+        margin-top: 0;
+        width: 100%;
+        font-size: 3.9rem;
+      }
+      .h1-sublinhado {
+        display: none;
+      }
+    }
+
+    .mobile-menu {
+      display: block;
+    }
+
+    .avatar {
+      display: none;
+    }
+
+    .navigation {
+      margin-top: 170px;
+      min-width: 100%;
+      align-items: center;
+    }
+
+    .navigation li {
+    }
+
+    .socialMedia {
+      margin-top: 170px;
     }
   }
 `

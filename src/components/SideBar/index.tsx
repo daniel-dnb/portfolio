@@ -1,21 +1,39 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-import { Container } from './SideBar'
+import { useContext, useEffect } from 'react'
 import Avatar from '../../assets/avatar.svg'
-import Linkedin from '../../assets/Linkedin.svg'
-import Github from '../../assets/Github.svg'
 import Facebook from '../../assets/Facebook.svg'
+import Github from '../../assets/Github.svg'
+import Linkedin from '../../assets/Linkedin.svg'
+import { MenuContext } from '../../contexts/MenuContext'
+import { Container } from './SideBar'
 
 const SideBar: React.FC = () => {
   const router = useRouter()
+  const { isMenuActive, activeMenu } = useContext(MenuContext)
+
+  useEffect(() => {
+    if (isMenuActive) {
+      activeMenu()
+    }
+  }, [router.pathname])
 
   return (
-    <Container>
-      <Avatar />
+    <Container isMenuActive={isMenuActive}>
+      <div className="avatar">
+        <Avatar />
+      </div>
 
-      <h1>Daniel Bernardes</h1>
-      <div className="h1--sublinhado" />
+      <div className="menu">
+        <h1>Daniel Bernardes</h1>
+        <div className="h1-sublinhado" />
+
+        <div className="mobile-menu" onClick={() => activeMenu()}>
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
+      </div>
 
       <ul className="navigation">
         <li className={router.pathname == '/' ? 'active' : ''}>

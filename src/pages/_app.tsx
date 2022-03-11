@@ -1,17 +1,20 @@
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
-import SideBar from '../components/SideBar'
-
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 
+import { MenuProvider } from '../contexts/MenuContext'
+import SideBar from '../components/SideBar'
+
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <SideBar />
-      <Component {...pageProps} />
-      <GlobalStyle />
-    </ThemeProvider>
+    <MenuProvider>
+      <ThemeProvider theme={theme}>
+        <SideBar />
+        <Component {...pageProps} />
+        <GlobalStyle />
+      </ThemeProvider>
+    </MenuProvider>
   )
 }
 

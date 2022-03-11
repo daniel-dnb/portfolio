@@ -1,15 +1,17 @@
 import Head from 'next/head'
-import { Container } from '../styles/pages/Home'
+import PageBackground from '../components/PageBackground'
 
 const About: React.FC = () => {
   return (
-    <Container>
+    <>
       <Head>
         <title>Daniel Bernardes</title>
       </Head>
 
-      <h1>About</h1>
-    </Container>
+      <PageBackground>
+        <h1>About</h1>
+      </PageBackground>
+    </>
   )
 }
 
