@@ -95,7 +95,7 @@ export const Container = styled.div<ContainerType>`
     }
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 768px) {
     position: stick;
     width: 100vw;
     min-width: 356px;

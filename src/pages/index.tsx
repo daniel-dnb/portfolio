@@ -2,7 +2,14 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import ConsoleBox from '../components/ConsoleBox'
 import PageBackground from '../components/PageBackground'
-import { Container, Grid } from '../styles/pages/Home'
+import {
+  BackgroundText,
+  Container,
+  Grid,
+  GridContainer,
+  HomeContainer,
+  TextColor
+} from '../styles/pages/Home'
 
 const Home: React.FC = () => {
   const router = useRouter()
@@ -16,26 +23,25 @@ const Home: React.FC = () => {
       <PageBackground>
         <Container>
           <Grid>
-            <div className="grid-container-left">
-              <div className="code">
-                <div className="text">
-                  import <span className="white">{'React'}</span> from{' '}
-                  <span className="yellow">{"'react'"}</span>
-                  <br />
-                  <br />
-                  const <span className="blue">{'Home'}</span>:{' '}
-                  <span className="purple">{'React.FC'}</span> ={' '}
-                  <span className="yellow">{'()'}</span> {'=>'}{' '}
-                  <span className="yellow">{'{'}</span>
-                  <br />
-                  &nbsp;&nbsp;{'return ('}
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <span className="white">{'<'}</span>div
-                  <span className="white">{'>'}</span>
-                  <br />
-                </div>
-                {/*---------------Inside the Code---------------*/}
+            <GridContainer Side="left">
+              <BackgroundText>
+                import <TextColor Color="white">{'React'}</TextColor> from{' '}
+                <TextColor Color="yellow">{"'react'"}</TextColor>
+                <br />
+                <br />
+                const <TextColor Color="blue">{'Home'}</TextColor>:{' '}
+                <TextColor Color="purple">{'React.FC'}</TextColor> ={' '}
+                <TextColor Color="yellow">{'()'}</TextColor> {'=>'}{' '}
+                <TextColor Color="yellow">{'{'}</TextColor>
+                <br />
+                &nbsp;&nbsp;{'return ('}
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <TextColor Color="white">{'<'}</TextColor>div
+                <TextColor Color="white">{'>'}</TextColor>
+                <br />
+              </BackgroundText>
+              <HomeContainer>
                 <div className="INSIDE">
                   <div className="title">
                     <h1>
@@ -48,29 +54,28 @@ const Home: React.FC = () => {
                     I’m a Brazilian frontend developer.
                   </div>
                   <div className="button">Contact Me!</div>
+                  <ConsoleBox Width="70rem" Window="Small"></ConsoleBox>
                 </div>
-                <ConsoleBox Width="70rem" Window="Small"></ConsoleBox>
-                {/*---------------Inside the Code---------------*/}
-                <div className="text">
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;
-                  <span className="white">{'</'}</span>div
-                  <span className="white">{'>'}</span>
-                  <br />
-                  &nbsp;&nbsp;{')'}
-                  <br />
-                  <span className="yellow">{'}'}</span>
-                  <br />
-                  <br />
-                  export default <span className="blue">Home</span>
-                </div>
-              </div>
-            </div>
-            <div className="grid-container-right">
+              </HomeContainer>
+              <BackgroundText>
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <TextColor Color="white">{'</'}</TextColor>div
+                <TextColor Color="white">{'>'}</TextColor>
+                <br />
+                &nbsp;&nbsp;{')'}
+                <br />
+                <TextColor Color="yellow">{'}'}</TextColor>
+                <br />
+                <br />
+                export default <TextColor Color="blue">Home</TextColor>
+              </BackgroundText>
+            </GridContainer>
+            <GridContainer Side="right">
               <ConsoleBox Width="70rem" Window="Large">
                 Sexo
               </ConsoleBox>
-            </div>
+            </GridContainer>
           </Grid>
         </Container>
       </PageBackground>

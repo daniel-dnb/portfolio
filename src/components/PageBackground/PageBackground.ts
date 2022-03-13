@@ -29,7 +29,6 @@ export const Container = styled.div<ContainerType>`
     }
 
     .control-buttons {
-      position: absolute;
       display: flex;
       flex-direction: row;
       .red {
@@ -128,7 +127,7 @@ export const Container = styled.div<ContainerType>`
     }
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 768px) {
     max-width: 100%;
     min-width: 356px;
     padding-top: 80px;
