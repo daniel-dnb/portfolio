@@ -125,3 +125,5 @@ export const GridContainer = styled.div<GridContainerProps>`
       align-items: center;
     `}
 `
+
+export const ConsoleContainer = styled.div``

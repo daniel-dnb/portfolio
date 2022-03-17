@@ -1,10 +1,19 @@
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
-
-import { MenuContext } from '../../contexts/MenuContext'
-
 import ReactIMG from '../../assets/React.svg'
-import { Container } from './PageBackground'
+import { MenuContext } from '../../contexts/MenuContext'
+import {
+  CicleYellow,
+  CircleGreen,
+  CircleRed,
+  Container,
+  NavButtons,
+  PageContainer,
+  PageNavigation,
+  PageUrl,
+  TopBar,
+  TopBarTitle
+} from './styled'
 
 const PageBackground: React.FC = props => {
   const router = useRouter()
@@ -12,18 +21,22 @@ const PageBackground: React.FC = props => {
 
   return (
     <Container isMenuActive={isMenuActive}>
-      <div className="title-box">
-        <div className="control-buttons">
-          <div className="red"></div>
-          <div className="yellow"></div>
-          <div className="green"></div>
-        </div>
-        <div className="title-box-title">
-          index.tsx - portfolio - Visual Studio Code
-        </div>
-      </div>
-      <div className="container">
-        <ul className="page-navigation">
+      <TopBar>
+        <NavButtons>
+          <CircleRed />
+          <CicleYellow />
+          <CircleGreen />
+        </NavButtons>
+        <TopBarTitle>
+          {router.pathname == '/' ? 'index.tsx' : ''}
+          {router.pathname == '/projects' ? 'projects.tsx' : ''}
+          {router.pathname == '/about' ? 'about.tsx' : ''}
+          {router.pathname == '/contact' ? 'contact.tsx' : ''} - portfolio -
+          Visual Studio Code
+        </TopBarTitle>
+      </TopBar>
+      <PageContainer>
+        <PageNavigation>
           <li className={router.pathname == '/' ? 'home active' : 'home'}>
             <ReactIMG className="react-img" />
             <span>index.tsx</span>
@@ -50,9 +63,9 @@ const PageBackground: React.FC = props => {
             <ReactIMG className="react-img" />
             <span>contact.tsx</span>
           </li>
-        </ul>
+        </PageNavigation>
 
-        <div className="page-url">
+        <PageUrl>
           <span>{'src > pages > '}</span>
           <ReactIMG className="react-img-url" />
           <span>
@@ -61,9 +74,9 @@ const PageBackground: React.FC = props => {
             {router.pathname == '/about' ? ' about.tsx' : ''}
             {router.pathname == '/contact' ? ' contact.tsx' : ''}
           </span>
-        </div>
+        </PageUrl>
         {props.children}
-      </div>
+      </PageContainer>
     </Container>
   )
 }

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { NProgressStyled } from './nprogress'
 
 export default createGlobalStyle`
   * {
@@ -16,6 +17,8 @@ export default createGlobalStyle`
     color: ${props => props.theme.colors.text};
     font: 400 1.6rem Roboto, sans-serif;
   }
+
+  ${NProgressStyled}
 
   @media (max-width: 768px) {
     html {

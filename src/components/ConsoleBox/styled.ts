@@ -1,43 +1,40 @@
 import styled from 'styled-components'
 
 interface ContainerType {
-  Width: string
-  Window: string
+  width: string
+  window: string
 }
 
 interface ContainerType2 {
-  Width: string
+  width: string
+  height?: string
 }
 
 export const Container = styled.div<ContainerType>`
-  width: 70rem;
-  display: ${props => (props.Window === 'Large' ? 'block' : 'none')};
+  width: ${props => props.width};
+  display: ${props => (props.window === 'Large' ? 'block' : 'none')};
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
 
   @media (max-width: 1545px) {
     width: 60vw;
-    display: ${props => (props.Window === 'Small' ? 'block' : 'none')};
-    margin-bottom: 8rem;
+    display: ${props => (props.window === 'Small' ? 'block' : 'none')};
+    margin-bottom: 5rem;
   }
   @media (max-width: 950px) {
     width: 50vw;
   }
   @media (max-width: 768px) {
-    width: 83vw;
+    width: 82vw;
   }
 `
 export const BoxContainer = styled.div<ContainerType2>`
   width: 100%;
-  height: 100%;
-  min-height: 40rem;
+  height: ${props => props.height};
   border-radius: 0px 0px 10px 10px;
   border: 1px solid ${props => props.theme.colors.purple};
   border-top: 0;
   padding-top: 15px;
   padding-left: 15px;
-  @media (max-width: 950px) {
-    height: 50vw;
-  }
 `
 
 export const TitleBox = styled.div<ContainerType2>`

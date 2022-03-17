@@ -7,26 +7,30 @@ import {
   TitleBox,
   TitleBoxTitle,
   Yellow
-} from './ConsoleBox'
+} from './styled'
 
 interface ConsoleBoxType {
-  Width: string
-  Window: string
+  width?: string
+  window: string
+  title: string
+  height: string
 }
 
 const ConsoleBox: React.FC<ConsoleBoxType> = props => {
   return (
     <>
-      <Container Width={props.Width} Window={props.Window}>
-        <TitleBox Width={props.Width}>
+      <Container width={props.width} window={props.window}>
+        <TitleBox width={props.width}>
           <ControlButtons>
             <Red></Red>
             <Yellow></Yellow>
             <Green></Green>
           </ControlButtons>
-          <TitleBoxTitle>portfolio : node — Konsole</TitleBoxTitle>
+          <TitleBoxTitle>{props.title} : node — Konsole</TitleBoxTitle>
         </TitleBox>
-        <BoxContainer Width={props.Width}>{props.children}</BoxContainer>
+        <BoxContainer width={props.width} height={props.height}>
+          {props.children}
+        </BoxContainer>
       </Container>
     </>
   )

@@ -1,9 +1,11 @@
+import { NextPage } from 'next'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import ConsoleBox from '../components/ConsoleBox'
+import ConsoleHomePage from '../components/ConsoleHomePage'
 import PageBackground from '../components/PageBackground'
 import {
   BackgroundText,
+  ConsoleContainer,
   Container,
   Grid,
   GridContainer,
@@ -11,13 +13,10 @@ import {
   TextColor
 } from '../styles/pages/Home'
 
-const Home: React.FC = () => {
-  const router = useRouter()
-
+const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Daniel Bernardes</title>
       </Head>
       <PageBackground>
@@ -54,7 +53,11 @@ const Home: React.FC = () => {
                     I’m a Brazilian frontend developer.
                   </div>
                   <div className="button">Contact Me!</div>
-                  <ConsoleBox Width="70rem" Window="Small"></ConsoleBox>
+                  <ConsoleContainer>
+                    <ConsoleBox title="portfolio" window="Small" height="40rem">
+                      <ConsoleHomePage />
+                    </ConsoleBox>
+                  </ConsoleContainer>
                 </div>
               </HomeContainer>
               <BackgroundText>
@@ -72,8 +75,13 @@ const Home: React.FC = () => {
               </BackgroundText>
             </GridContainer>
             <GridContainer Side="right">
-              <ConsoleBox Width="70rem" Window="Large">
-                Sexo
+              <ConsoleBox
+                title="portfolio"
+                width="36.5vw"
+                window="Large"
+                height="40rem"
+              >
+                <ConsoleHomePage />
               </ConsoleBox>
             </GridContainer>
           </Grid>

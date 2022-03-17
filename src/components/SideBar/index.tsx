@@ -1,12 +1,21 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext, useEffect } from 'react'
-import Avatar from '../../assets/avatar.svg'
-import Facebook from '../../assets/Facebook.svg'
-import Github from '../../assets/Github.svg'
-import Linkedin from '../../assets/Linkedin.svg'
 import { MenuContext } from '../../contexts/MenuContext'
-import { Container } from './SideBar'
+import {
+  Avatar,
+  Container,
+  Facebook,
+  Github,
+  Linkedin,
+  Menu,
+  MobileMenu,
+  MobileMenuLines,
+  Nav,
+  SocialMedias,
+  Title,
+  TitleUnderline
+} from './styled'
 
 const SideBar: React.FC = () => {
   const router = useRouter()
@@ -20,22 +29,21 @@ const SideBar: React.FC = () => {
 
   return (
     <Container isMenuActive={isMenuActive}>
-      <div className="avatar">
-        <Avatar />
-      </div>
+      <Avatar />
 
-      <div className="menu">
-        <h1>Daniel Bernardes</h1>
-        <div className="h1-sublinhado" />
+      <Menu>
+        <Title>Daniel Bernardes</Title>
+        <TitleUnderline />
 
-        <div className="mobile-menu" onClick={() => activeMenu()}>
-          <div className="line1"></div>
-          <div className="line2"></div>
-          <div className="line3"></div>
-        </div>
-      </div>
+        <MobileMenu
+          onClick={() => activeMenu()}
+          status={isMenuActive ? 'open' : 'close'}
+        >
+          <MobileMenuLines />
+        </MobileMenu>
+      </Menu>
 
-      <ul className="navigation">
+      <Nav>
         <li className={router.pathname == '/' ? 'active' : ''}>
           <Link href="/">Home</Link>
         </li>
@@ -48,9 +56,9 @@ const SideBar: React.FC = () => {
         <li className={router.pathname == '/contact' ? 'active' : ''}>
           <Link href="/contact">Contact</Link>
         </li>
-      </ul>
+      </Nav>
 
-      <div className="socialMedia">
+      <SocialMedias>
         <a href="https://www.linkedin.com/in/dann-bnd/" target="_blank">
           <Linkedin />
         </a>
@@ -60,7 +68,7 @@ const SideBar: React.FC = () => {
         <a href="https://www.facebook.com/DaNNbnd/" target="_blank">
           <Facebook />
         </a>
-      </div>
+      </SocialMedias>
     </Container>
   )
 }
