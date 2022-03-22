@@ -14,12 +14,17 @@ interface ConsoleBoxType {
   window: string
   title: string
   height: string
+  margintop?: string
 }
 
 const ConsoleBox: React.FC<ConsoleBoxType> = props => {
   return (
     <>
-      <Container width={props.width} window={props.window}>
+      <Container
+        width={props.width}
+        window={props.window}
+        margintop={props.margintop}
+      >
         <TitleBox width={props.width}>
           <ControlButtons>
             <Red></Red>

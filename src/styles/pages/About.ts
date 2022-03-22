@@ -14,38 +14,7 @@ export const Container = styled.div`
   user-select: none;
 `
 
-export const BackgroundText = styled.div`
-  font: italic 700 1.4rem Consolas;
-  color: rgba(218, 121, 198, 0.4);
-`
-export const TextColor = styled.span<TextColorProps>`
-  ${props =>
-    props.Color === 'white' &&
-    css`
-      color: ${props => props.theme.colors.text};
-      opacity: 0.4;
-    `}
-  ${props =>
-    props.Color === 'blue' &&
-    css`
-      color: #4cbed6;
-      opacity: 0.4;
-    `}
-  ${props =>
-    props.Color === 'purple' &&
-    css`
-      color: ${props => props.theme.colors.purple};
-      opacity: 0.4;
-    `}
-  ${props =>
-    props.Color === 'yellow' &&
-    css`
-      color: #dade79;
-      opacity: 0.4;
-    `}
-`
-
-export const Title = styled.h2`
+export const TitleContent = styled.h2`
   font: 700 5rem Ubuntu, sans-serif;
   color: ${props => props.theme.colors.primary};
   margin: 3px 0 3px 60px;
@@ -65,7 +34,7 @@ export const SecondTitle = styled.h3`
   }
 `
 
-export const Description = styled.p`
+export const DescriptionContent = styled.p`
   max-width: 430px;
   font: 600 1.4rem Roboto, sans-serif;
   color: ${props => props.theme.colors.text};

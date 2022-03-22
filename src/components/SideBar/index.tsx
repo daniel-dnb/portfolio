@@ -27,6 +27,14 @@ const SideBar: React.FC = () => {
     }
   }, [router.pathname])
 
+  useEffect(() => {
+    if (isMenuActive) {
+      document.body.style.overflow = 'hidden'
+      return
+    }
+    document.body.style.overflow = ''
+  }, [isMenuActive])
+
   return (
     <Container isMenuActive={isMenuActive}>
       <Avatar />

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 interface ContainerType {
   width: string
   window: string
+  margintop?: string
 }
 
 interface ContainerType2 {
@@ -19,6 +20,7 @@ export const Container = styled.div<ContainerType>`
     width: 60vw;
     display: ${props => (props.window === 'Small' ? 'block' : 'none')};
     margin-bottom: 5rem;
+    margin-top: ${props => props.margintop && props.margintop};
   }
   @media (max-width: 950px) {
     width: 50vw;

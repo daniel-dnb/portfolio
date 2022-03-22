@@ -126,6 +126,7 @@ export const PageUrl = styled.div`
 export const Container = styled.div<ContainerType>`
   width: 100vw - 300px;
   min-height: 100vh;
+  overflow-y: hidden;
   margin-left: 300px;
 
   @media (max-width: 768px) {

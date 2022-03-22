@@ -12,6 +12,8 @@ export default createGlobalStyle`
     font-size: 62.5%;
   }
 
+
+
   body {
     background: ${props => props.theme.colors.background2};
     color: ${props => props.theme.colors.text};
