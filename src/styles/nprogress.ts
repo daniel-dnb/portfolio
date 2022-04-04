@@ -6,7 +6,7 @@ export const NProgressStyled = css`
   }
 
   #nprogress .bar {
-    background: #d3d3d3;
+    background: #40dabf;
 
     position: fixed;
     z-index: 1031;
@@ -24,7 +24,7 @@ export const NProgressStyled = css`
     right: 0px;
     width: 100px;
     height: 100%;
-    box-shadow: 0 0 10px #d3d3d3, 0 0 5px #d3d3d3;
+    box-shadow: 0 0 10px #40dabf, 0 0 5px #40dabf;
     opacity: 1;
 
     -webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -47,8 +47,8 @@ export const NProgressStyled = css`
     box-sizing: border-box;
 
     border: solid 2px transparent;
-    border-top-color: #d3d3d3;
-    border-left-color: #d3d3d3;
+    border-top-color: #40dabf;
+    border-left-color: #40dabf;
     border-radius: 50%;
 
     -webkit-animation: nprogress-spinner 400ms linear infinite;

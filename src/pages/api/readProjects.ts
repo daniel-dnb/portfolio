@@ -11,7 +11,7 @@ export default async function handler(
 
       const projects = await db.collection('projects').find({}).toArray()
 
-      res.status(200).json({ projects })
+      res.status(200).json(projects)
     } catch {
       res.status(404).json({ error: 'Something is wrong' })
     }

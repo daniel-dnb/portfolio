@@ -22,22 +22,34 @@ interface initialStateProps {
   projects: Props[]
 }
 
-const initialState: initialStateProps = null
+const initialState: initialStateProps = {
+  projects: [
+    {
+      key: null,
+      title: null,
+      description: null,
+      github: null,
+      site: null,
+      imgs: [null],
+      technologies: [null]
+    }
+  ]
+}
 
 export const ProjectsSlice = createSlice({
   name: 'projects',
   initialState,
   reducers: {
     setProjectsData: (state, { payload }) => {
-      return (state = payload)
+      return payload
     }
   },
   extraReducers: {
     [HYDRATE]: (state, { payload }) => {
-      if (!payload.projects) {
+      if (!payload) {
         return state
       }
-      return (state = payload)
+      return payload
     }
   }
 })

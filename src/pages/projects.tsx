@@ -11,7 +11,7 @@ const Projects: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Daniel Bernardes</title>
+        <title>Daniel Bernardes — Projects</title>
       </Head>
 
       <PageBackground>
@@ -32,7 +32,7 @@ export const getStaticProps = wrapper.getStaticProps(store => async ctx => {
   await axios
     .get('http://localhost:3000/api/readProjects')
     .then(res => {
-      store.dispatch(setProjectsData(res.data.projects))
+      store.dispatch(setProjectsData(res.data))
     })
     .catch(console.log)
 
