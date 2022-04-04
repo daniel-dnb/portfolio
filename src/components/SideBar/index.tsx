@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { MenuContext } from '../../contexts/MenuContext'
 import {
   Avatar,
   Container,
-  Facebook,
   Github,
+  Instagram,
   Linkedin,
   Menu,
   MobileMenu,
@@ -20,6 +20,7 @@ import {
 const SideBar: React.FC = () => {
   const router = useRouter()
   const { isMenuActive, activeMenu } = useContext(MenuContext)
+  const [isNavBarShowing, setIsNavBarShowing] = useState(true)
 
   useEffect(() => {
     if (isMenuActive) {
@@ -35,9 +36,33 @@ const SideBar: React.FC = () => {
     document.body.style.overflow = ''
   }, [isMenuActive])
 
+  if (typeof window !== 'undefined') {
+    let scrollPos = 0
+    const changeSize = () => {
+      if (document.body.getBoundingClientRect().top > scrollPos) {
+        scrollPos = document.body.getBoundingClientRect().top
+        setIsNavBarShowing(true)
+        return
+      } else {
+        scrollPos = document.body.getBoundingClientRect().top
+        setIsNavBarShowing(false)
+        return
+      }
+    }
+
+    useEffect(() => {
+      window.addEventListener('scroll', changeSize)
+      return () => {
+        window.removeEventListener('scroll', changeSize)
+      }
+    }, [])
+  }
+
   return (
-    <Container isMenuActive={isMenuActive}>
-      <Avatar />
+    <Container isMenuActive={isMenuActive} isNavBarShowing={isNavBarShowing}>
+      <div>
+        <Avatar />
+      </div>
 
       <Menu>
         <Title>Daniel Bernardes</Title>
@@ -67,14 +92,14 @@ const SideBar: React.FC = () => {
       </Nav>
 
       <SocialMedias>
-        <a href="https://www.linkedin.com/in/dann-bnd/" target="_blank">
+        <a href="https://www.linkedin.com/in/daniel-bnd/" target="_blank">
           <Linkedin />
         </a>
-        <a href="https://github.com/dann-bnd/" target="_blank">
+        <a href="https://github.com/daniel-bnd/" target="_blank">
           <Github />
         </a>
-        <a href="https://www.facebook.com/DaNNbnd/" target="_blank">
-          <Facebook />
+        <a href="https://www.instagram.com/dann_bnd/" target="_blank">
+          <Instagram />
         </a>
       </SocialMedias>
     </Container>

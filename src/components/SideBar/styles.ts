@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
 import AvatarSVG from '../../assets/avatar.svg'
-import FacebookSVG from '../../assets/Facebook.svg'
 import GithubSVG from '../../assets/Github.svg'
+import InstagramSVG from '../../assets/Instagram.svg'
 import LinkedinSVG from '../../assets/Linkedin.svg'
 
 type ContainerProps = {
   isMenuActive: boolean
+  isNavBarShowing: boolean
 }
 
 type MobileMenuProps = {
@@ -15,6 +16,7 @@ type MobileMenuProps = {
 
 export const Avatar = styled(AvatarSVG)`
   margin-top: 60px;
+  position: relative;
 `
 
 export const Menu = styled.div`
@@ -124,6 +126,7 @@ export const LinkStyled = styled(Link)``
 export const SocialMedias = styled.div`
   width: 160px;
   margin-top: 120px;
+  margin-bottom: 100px;
   display: flex;
   justify-content: space-between;
   transition: 0.3s ease-in-out;
@@ -144,7 +147,7 @@ export const Github = styled(GithubSVG)`
     transform: scale(1.15, 1.15);
   }
 `
-export const Facebook = styled(FacebookSVG)`
+export const Instagram = styled(InstagramSVG)`
   transition: 0.3s ease-in-out;
   &:hover {
     transform: scale(1.15, 1.15);
@@ -157,18 +160,29 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   width: 300px;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   color: ${props => props.theme.colors.text};
   background-color: ${props => props.theme.colors.background};
 
   @media (max-width: 768px) {
-    position: stick;
+    position: fixed;
     width: 100vw;
     min-width: 356px;
     height: ${props => (props.isMenuActive ? '100vh' : '80px')};
-    transition: height 0.8s ease-in-out;
+    transition: height 0.8s ease-in-out, opacity 0.5s ease-in;
     overflow: hidden;
     z-index: 9;
+
+    ${props =>
+      props.isNavBarShowing &&
+      css`
+        opacity: 1;
+      `};
+    ${props =>
+      !props.isNavBarShowing &&
+      css`
+        opacity: 0;
+      `};
 
     ${Menu} {
       margin-top: 20px;
