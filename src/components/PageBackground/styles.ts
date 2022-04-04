@@ -53,7 +53,7 @@ export const CircleGreen = styled.div`
 
 export const PageContainer = styled.div`
   width: 100vw - 300px;
-  min-height: 96.5vh;
+  min-height: 96.8vh;
   border-radius: 0px 0px 5px 5px;
   border: 1px solid ${props => props.theme.colors.purple};
   border-top: 0;

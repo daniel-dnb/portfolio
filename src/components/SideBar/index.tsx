@@ -15,7 +15,7 @@ import {
   SocialMedias,
   Title,
   TitleUnderline
-} from './styled'
+} from './styles'
 
 const SideBar: React.FC = () => {
   const router = useRouter()

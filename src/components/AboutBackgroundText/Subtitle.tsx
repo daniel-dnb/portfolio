@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { TextColor } from './styled'
+import { TextColor } from './styles'
 
 const Subtitle: NextPage = ({ children }) => {
   return (

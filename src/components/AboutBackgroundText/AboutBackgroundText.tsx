@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { BackgroundText, TextColor } from './styled'
+import { BackgroundText, TextColor } from './styles'
 
 const AboutBackgroundText: NextPage = ({ children }) => {
   return (

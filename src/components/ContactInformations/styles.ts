@@ -3,69 +3,36 @@ import EmailSVG from '../../assets/Email.svg'
 import LocationSVG from '../../assets/Location.svg'
 import PhoneSVG from '../../assets/Phone.svg'
 
-interface GridContainerProps {
-  Side: string
-}
-
-interface PurpleCircleProps {
+type PurpleCircleProps = {
   isThisLink?: boolean
 }
 
-export const Container = styled.div`
-  padding-left: 1.55vw;
-  padding-top: 5px;
-  user-select: none;
-`
+type ContainerProps = {
+  Side: string
+}
 
-export const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+export const Container = styled.div<ContainerProps>`
+  width: 100%;
 
-  @media (max-width: 768px) {
-    display: inherit;
-  }
-`
-export const GridContainer = styled.div<GridContainerProps>`
   ${props =>
-    props.Side === 'right' &&
+    props.Side === 'left' &&
     css`
-      margin: auto 0;
-      @media (max-width: 1545px) {
-        display: none;
-      }
+      display: none;
     `}
-`
 
-export const TitleContent = styled.h2`
-  margin: 0.5rem 6rem;
-  font: 700 5rem Ubuntu, sans-serif;
-  color: ${props => props.theme.colors.primary};
-
-  @media (max-width: 768px) {
-    margin-left: 3rem;
-  }
-`
-
-export const DescriptionContent = styled.p`
-  margin: 0.5rem 6rem;
-  width: 37vw;
-  font: 600 1.6rem Roboto, sans-serif;
-  color: ${props => props.theme.colors.text};
-
-  @media (max-width: 768px) {
-    width: 80vw;
-    margin-left: 3rem;
-  }
-`
-
-export const FormContent = styled.div`
-  margin: 0.5rem 6rem;
-  width: 36.46vw;
-  display: grid;
-
-  @media (max-width: 768px) {
-    width: 80vw;
-    margin-left: 3rem;
+  @media (max-width: 1545px) {
+    ${props =>
+      props.Side === 'left' &&
+      css`
+        display: inherit;
+        margin-top: 20px;
+        padding-left: 3rem;
+      `}
+    ${props =>
+      props.Side === 'right' &&
+      css`
+        display: none;
+      `}
   }
 `
 
@@ -120,6 +87,7 @@ export const LocationBox = styled.div`
     color: ${props => props.theme.colors.text};
   }
 `
+
 export const EmailBox = styled(LocationBox)`
   a {
     text-decoration: none;
@@ -133,15 +101,18 @@ export const EmailBox = styled(LocationBox)`
     }
   }
 `
+
 export const PhoneBox = styled(LocationBox)`
   margin-bottom: 0;
 `
 
 export const Email = styled(EmailSVG)``
+
 export const Location = styled(LocationSVG)``
+
 export const Phone = styled(PhoneSVG)``
 
-export const ContactIMG = styled.div`
+export const ContactIMG = styled.div<ContainerProps>`
   z-index: -9;
   background-image: url('/ContactPNG.png');
   background-repeat: no-repeat;
@@ -149,4 +120,14 @@ export const ContactIMG = styled.div`
   height: 390px;
   margin-top: -70px;
   margin-left: 25%;
+
+  @media (max-width: 1545px) {
+    ${props =>
+      props.Side === 'left' &&
+      css`
+        margin-top: -70px;
+        margin-left: -60px;
+        transform: scale(0.8);
+      `}
+  }
 `

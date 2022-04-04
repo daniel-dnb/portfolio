@@ -13,7 +13,7 @@ import {
   PageUrl,
   TopBar,
   TopBarTitle
-} from './styled'
+} from './styles'
 
 const PageBackground: React.FC = props => {
   const router = useRouter()

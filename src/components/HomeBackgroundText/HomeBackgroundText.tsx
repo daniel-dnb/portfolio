@@ -1,18 +1,16 @@
 import { NextPage } from 'next'
 import { BackgroundText, TextColor } from './styles'
 
-const ContactBackgroundText: NextPage = ({ children }) => {
+const HomeBackgroundText: NextPage = ({ children }) => {
   return (
     <>
       <BackgroundText>
-        import
-        <TextColor Color="white">{' React'}</TextColor> from{' '}
+        import <TextColor Color="white">{'React'}</TextColor> from{' '}
         <TextColor Color="yellow">{"'react'"}</TextColor>
         <br />
         <br />
-        const
-        <TextColor Color="blue"> Contact</TextColor>:{' '}
-        <TextColor Color="purple">React.FC</TextColor> ={' '}
+        const <TextColor Color="blue">{'Home'}</TextColor>:{' '}
+        <TextColor Color="purple">{'React.FC'}</TextColor> ={' '}
         <TextColor Color="yellow">{'()'}</TextColor> {'=>'}{' '}
         <TextColor Color="yellow">{'{'}</TextColor>
         <br />
@@ -32,11 +30,10 @@ const ContactBackgroundText: NextPage = ({ children }) => {
         <TextColor Color="yellow">{'}'}</TextColor>
         <br />
         <br />
-        export default
-        <TextColor Color="blue"> Contact</TextColor>
+        export default <TextColor Color="blue">Home</TextColor>
       </BackgroundText>
     </>
   )
 }
 
-export default ContactBackgroundText
+export default HomeBackgroundText

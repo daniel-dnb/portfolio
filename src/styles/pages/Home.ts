@@ -9,7 +9,7 @@ type GridContainerProps = {
 }
 
 export const Container = styled.div`
-  padding-left: 3rem;
+  padding-left: 1.55vw;
   padding-top: 5px;
   user-select: none;
 `
@@ -27,6 +27,7 @@ export const HomeContainer = styled.div`
       letter-spacing: -0.03em;
       line-height: 172px;
       color: ${props => props.theme.colors.text};
+      animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
       span {
         color: ${props => props.theme.colors.primary};
       }
@@ -45,6 +46,8 @@ export const HomeContainer = styled.div`
       margin-top: 15px;
       font: 700 4rem Ubuntu, sans-serif;
       color: #989898;
+      animation: text-focus-in 1s 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+        both;
       @media (max-width: 870px) {
         font-size: 2.5rem;
       }
@@ -62,7 +65,8 @@ export const HomeContainer = styled.div`
       font: 500 22px Ubuntu, sans-serif;
       border-radius: 10px;
       color: ${props => props.theme.colors.primary};
-      animation: neon 1.5s alternate infinite ease-in-out;
+      animation: text-focus-in 1s 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both,
+        neon 1.5s alternate infinite ease-in-out;
       :hover {
         cursor: pointer;
         animation-play-state: paused;
@@ -75,6 +79,18 @@ export const HomeContainer = styled.div`
       }
       to {
         filter: drop-shadow(0 0 10px ${props => props.theme.colors.primary});
+      }
+    }
+    @keyframes text-focus-in {
+      0% {
+        -webkit-filter: blur(12px);
+        filter: blur(12px);
+        opacity: 0;
+      }
+      100% {
+        -webkit-filter: blur(0px);
+        filter: blur(0px);
+        opacity: 1;
       }
     }
   }

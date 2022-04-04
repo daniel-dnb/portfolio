@@ -9,7 +9,7 @@ type GridContainerProps = {
 }
 
 export const Container = styled.div`
-  padding-left: 3rem;
+  padding-left: 1.55vw;
   padding-top: 5px;
   user-select: none;
 `

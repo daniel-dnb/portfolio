@@ -1,8 +1,9 @@
+import axios from 'axios'
 import { Form, Formik } from 'formik'
 import { NextPage } from 'next'
 import { useState } from 'react'
 import * as yup from 'yup'
-import { BottomBar, Btn, Input } from './styled'
+import { BottomBar, Btn, Input } from './styles'
 
 const ContactForm: NextPage = () => {
   const [nameError, setNameError] = useState('bottom-bar')
@@ -10,7 +11,7 @@ const ContactForm: NextPage = () => {
   const [subjectError, setSubjectError] = useState('bottom-bar')
   const [messageError, setMessageError] = useState('bottom-bar')
 
-  const validationContact = yup.object().shape({
+  const validationContact = yup.object({
     name: yup.string().required('Empty field'),
     email: yup
       .string()
@@ -28,14 +29,28 @@ const ContactForm: NextPage = () => {
     message: null
   }
 
+  const handleSendEmail = ({ name, email, subject, message }) => {
+    axios({
+      method: 'post',
+      url: '/api/sendEmail',
+      data: {
+        name,
+        email,
+        subject,
+        message
+      }
+    })
+      .then(() => window.location.reload())
+      .catch(() => {
+        alert('Something went wrong')
+      })
+  }
+
   return (
     <>
       <Formik
         initialValues={initialValues}
-        onSubmit={values => {
-          alert([values.name, values.email, values.subject, values.message])
-          window.location.reload()
-        }}
+        onSubmit={values => handleSendEmail(values)}
         validationSchema={validationContact}
       >
         {({ errors, touched }) => (

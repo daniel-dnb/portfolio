@@ -5,6 +5,7 @@ import NProgress from 'nprogress'
 import { ThemeProvider } from 'styled-components'
 import SideBar from '../components/SideBar'
 import { MenuProvider } from '../contexts/MenuContext'
+import { wrapper } from '../redux/store'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
 
@@ -38,4 +39,4 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)

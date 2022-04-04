@@ -7,7 +7,7 @@ import {
   TitleBox,
   TitleBoxTitle,
   Yellow
-} from './styled'
+} from './styles'
 
 interface ConsoleBoxType {
   width?: string

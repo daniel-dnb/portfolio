@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { Container } from './styled'
+import { Container } from './styles'
 
 const ConsoleAboutPage: NextPage = () => {
   return (
