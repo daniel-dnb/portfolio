@@ -2,6 +2,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 import {
+  CloseButton,
   Container,
   DescriptionBox,
   LinkBox,
@@ -39,7 +40,10 @@ interface ModalProps {
   data: DataProps
 }
 
-export default function Modal({ OnClose = () => {}, data }: ModalProps) {
+export default function ProjectsModal({
+  OnClose = () => {},
+  data
+}: ModalProps) {
   const database = data
 
   function handleOutsideClick(e) {
@@ -60,6 +64,10 @@ export default function Modal({ OnClose = () => {}, data }: ModalProps) {
     )
   }
 
+  function handleOpenImage(url) {
+    window.open(url, '_blank').focus()
+  }
+
   return (
     <Container id={data.key} onClick={handleOutsideClick}>
       <ModalBox key={crypto.randomBytes(20).toString('hex')}>
@@ -71,6 +79,7 @@ export default function Modal({ OnClose = () => {}, data }: ModalProps) {
               <SliderImage
                 key={crypto.randomBytes(20).toString('hex')}
                 src={img}
+                onClick={() => handleOpenImage(img)}
               />
             </SliderBox>
           ))}
@@ -122,6 +131,7 @@ export default function Modal({ OnClose = () => {}, data }: ModalProps) {
             </TechnologieBox>
           ))}
         </DescriptionBox>
+        <CloseButton onClick={() => OnClose()}>CLOSE</CloseButton>
       </ModalBox>
     </Container>
   )

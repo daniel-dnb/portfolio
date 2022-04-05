@@ -6,6 +6,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
+  display: relative;
   top: 0;
   left: 0;
   z-index: 10;
@@ -54,6 +55,7 @@ export const ModalBox = styled.div`
   height: 90vh;
   border-radius: 25px;
   padding-top: 20px;
+  padding-bottom: 20px;
   background-color: ${props => props.theme.colors.background};
   outline: 2px solid ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.text};
@@ -219,4 +221,35 @@ export const Github = styled(GithubSVG)`
 
 export const SiteIcon = styled(SiteIconSVG)`
   transform: Scale(0.9);
+`
+
+export const CloseButton = styled.button`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 35px;
+  margin: 0 auto;
+  border: 2px solid ${props => props.theme.colors.primary};
+  border-radius: 12px;
+  background: ${props => props.theme.colors.background};
+  font: 700 1.6rem Roboto, sans-serif;
+  color: ${props => props.theme.colors.primary};
+  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both,
+    neon 1.5s alternate infinite ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    animation-play-state: paused;
+  }
+
+  @keyframes neon {
+    from {
+      filter: drop-shadow(0 0 2px ${props => props.theme.colors.primary});
+    }
+    to {
+      filter: drop-shadow(0 0 5px ${props => props.theme.colors.primary});
+    }
+  }
 `

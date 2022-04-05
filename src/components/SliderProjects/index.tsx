@@ -4,7 +4,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 import { selectProjects } from '../../redux/store/slices/projects'
-import Modal from '../Modal'
+import ProjectsModal from '../ProjectsModal'
 import { Circle, Container, CoverIMG, SliderBox, TitleIMG } from './styles'
 
 const SliderProjects: React.FC = (props: any) => {
@@ -60,7 +60,10 @@ const SliderProjects: React.FC = (props: any) => {
     return (
       <Container>
         {isModalVisible ? (
-          <Modal OnClose={() => setIsModalVisible(false)} data={modalInfos} />
+          <ProjectsModal
+            OnClose={() => setIsModalVisible(false)}
+            data={modalInfos}
+          />
         ) : null}
         <Slider {...settings}>
           {projects &&
