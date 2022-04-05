@@ -2,7 +2,7 @@
 
 This is my portfolio, and here i will despend all my skills with NextJS to provide the best portfolio you will see.
 
-[HomeScreen](https://res.cloudinary.com/decridgw4/image/upload/v1649201484/Portfolio_1_zacy5o.png)
+![HomeScreen](https://res.cloudinary.com/decridgw4/image/upload/v1649201484/Portfolio_1_zacy5o.png)
 
 ## Instalation
 
