@@ -1,12 +1,12 @@
-import crypto from 'crypto'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { connectToDatabase } from '../../lib/mongodb'
+//import crypto from 'crypto'
+//import { connectToDatabase } from '../../lib/mongodb'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'POST') {
+  /* if (req.method === 'POST') {
     try {
       const { title, description, github, site, imgs, technologies } = req.body
       const key = crypto.randomUUID()
@@ -29,5 +29,5 @@ export default async function handler(
     }
   } else {
     res.status(400).json({ error: 'Invalid request method' })
-  }
+  } */
 }
