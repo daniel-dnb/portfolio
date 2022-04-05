@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import {
   ContactBackgroundText,
   Description,
@@ -9,6 +8,7 @@ import {
 import ContactForm from '../components/ContactForm'
 import ContactInformations from '../components/ContactInformations'
 import PageBackground from '../components/PageBackground'
+import PageHead from '../components/PageHead'
 import {
   Container,
   DescriptionContent,
@@ -20,11 +20,7 @@ import {
 
 const Contact: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>Daniel Bernardes — Contact</title>
-      </Head>
-
+    <PageHead title="Daniel Bernardes — Contact" description="Contact me">
       <PageBackground>
         <Container>
           <Grid>
@@ -55,7 +51,7 @@ const Contact: NextPage = () => {
           </Grid>
         </Container>
       </PageBackground>
-    </>
+    </PageHead>
   )
 }
 

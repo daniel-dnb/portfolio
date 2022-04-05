@@ -1,8 +1,10 @@
+import { DefaultSeo } from 'next-seo'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import { ThemeProvider } from 'styled-components'
+import SEO from '../../next-seo-config'
 import SideBar from '../components/SideBar'
 import { MenuProvider } from '../contexts/MenuContext'
 import { wrapper } from '../redux/store'
@@ -25,6 +27,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <MenuProvider>
       <ThemeProvider theme={theme}>
+        <DefaultSeo {...SEO} />
         <Head>
           <meta
             name="viewport"

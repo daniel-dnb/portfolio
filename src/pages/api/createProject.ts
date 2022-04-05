@@ -13,7 +13,7 @@ export default async function handler(
       const { db } = await connectToDatabase()
 
       // const projects = await db.collection('projects').find().toArray()
-      const projects = await db.collection('projects').insertOne({
+      await db.collection('projects').insertOne({
         key,
         title,
         description,

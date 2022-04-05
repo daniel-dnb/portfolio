@@ -1,9 +1,9 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import ConsoleBox from '../components/ConsoleBox'
 import ConsoleHomePage from '../components/ConsoleHomePage'
 import { HomeBackgroundText } from '../components/HomeBackgroundText'
 import PageBackground from '../components/PageBackground'
+import PageHead from '../components/PageHead'
 import {
   ConsoleContainer,
   Container,
@@ -14,10 +14,7 @@ import {
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>Daniel Bernardes</title>
-      </Head>
+    <PageHead title="Daniel Bernardes" description="Front-End Developer">
       <PageBackground>
         <Container>
           <Grid>
@@ -62,7 +59,7 @@ const Home: NextPage = () => {
           </Grid>
         </Container>
       </PageBackground>
-    </>
+    </PageHead>
   )
 }
 

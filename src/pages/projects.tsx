@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { NextPage } from 'next'
-import Head from 'next/head'
 import PageBackground from '../components/PageBackground'
+import PageHead from '../components/PageHead'
 import ProjectsBackgroundText from '../components/ProjectsBackgroundText'
 import SliderProjects from '../components/SliderProjects'
 import { wrapper } from '../redux/store'
@@ -10,11 +10,7 @@ import { Container, Title } from '../styles/pages/Projects'
 
 const Projects: NextPage = () => {
   return (
-    <>
-      <Head>
-        <title>Daniel Bernardes — Projects</title>
-      </Head>
-
+    <PageHead title="Daniel Bernardes — Projects" description="My projects">
       <PageBackground>
         <Container>
           <ProjectsBackgroundText>
@@ -23,7 +19,7 @@ const Projects: NextPage = () => {
           </ProjectsBackgroundText>
         </Container>
       </PageBackground>
-    </>
+    </PageHead>
   )
 }
 
