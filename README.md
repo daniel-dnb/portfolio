@@ -6,7 +6,7 @@ This is my portfolio, and here i will despend all my skills with NextJS to provi
 
 ## Instalation
 
-Use [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/) to install all packages to this project.
+Use [yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/) to install all dependencies to this project.
 
 ```bash
 yarn
