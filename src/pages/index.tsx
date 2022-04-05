@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import ConsoleBox from '../components/ConsoleBox'
 import ConsoleHomePage from '../components/ConsoleHomePage'
 import { HomeBackgroundText } from '../components/HomeBackgroundText'
@@ -13,6 +14,8 @@ import {
 } from '../styles/pages/Home'
 
 const Home: NextPage = () => {
+  const router = useRouter()
+
   return (
     <PageHead title="Daniel Bernardes" description="Front-End Developer">
       <PageBackground>
@@ -32,7 +35,12 @@ const Home: NextPage = () => {
                     <div className="subtitle">
                       I’m a Brazilian frontend developer.
                     </div>
-                    <div className="button">Contact Me!</div>
+                    <div
+                      className="button"
+                      onClick={() => router.push('/contact')}
+                    >
+                      Contact Me!
+                    </div>
                     <ConsoleContainer>
                       <ConsoleBox
                         title="portfolio"
