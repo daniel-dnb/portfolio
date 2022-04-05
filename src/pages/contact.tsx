@@ -1,3 +1,4 @@
+import { NextPage } from 'next'
 import Head from 'next/head'
 import {
   ContactBackgroundText,
@@ -17,7 +18,7 @@ import {
   TitleContent
 } from '../styles/pages/Contact'
 
-const Contact: React.FC = () => {
+const Contact: NextPage = () => {
   return (
     <>
       <Head>

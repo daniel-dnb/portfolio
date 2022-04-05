@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { NextPage } from 'next'
 import Head from 'next/head'
 import PageBackground from '../components/PageBackground'
 import ProjectsBackgroundText from '../components/ProjectsBackgroundText'
@@ -7,7 +8,7 @@ import { wrapper } from '../redux/store'
 import { setProjectsData } from '../redux/store/slices/projects'
 import { Container, Title } from '../styles/pages/Projects'
 
-const Projects: React.FC = () => {
+const Projects: NextPage = () => {
   return (
     <>
       <Head>
