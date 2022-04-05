@@ -9,6 +9,7 @@ import {
 import ConsoleAboutPage from '../components/ConsoleAboutPage'
 import ConsoleBox from '../components/ConsoleBox'
 import PageBackground from '../components/PageBackground'
+import TechnologiesBox from '../components/TechnologiesBox'
 import {
   ConsoleContainer,
   Container,
@@ -71,6 +72,7 @@ const About: NextPage = () => {
                     to understand code.
                   </DescriptionContent>
                 </Description>
+                <TechnologiesBox side="left" />
                 <ConsoleContainer>
                   <ConsoleBox
                     title="skills"
@@ -84,11 +86,7 @@ const About: NextPage = () => {
               </AboutBackgroundText>
             </GridContainer>
             <GridContainer Side="right">
-              <img
-                className="StudyingPNG"
-                src="/StudyingPNG.png"
-                alt="Uma arte minha sentado estudando, olhando para um caderno que está em cima da mesa, com uma caneta na mão e um notebook à frente do caderno"
-              />
+              <TechnologiesBox side="right" />
               <FlexConsole>
                 <img
                   src="/TomandoCafe.png"

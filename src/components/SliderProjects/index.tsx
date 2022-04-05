@@ -56,31 +56,35 @@ const SliderProjects: React.FC = (props: any) => {
     ]
   }
 
-  return (
-    <Container>
-      {isModalVisible ? (
-        <Modal OnClose={() => setIsModalVisible(false)} data={modalInfos} />
-      ) : null}
-      <Slider {...settings}>
-        {projects &&
-          projects.map(data => (
-            <SliderBox key={data.key}>
-              <CoverIMG
-                key={data.imgs[0]}
-                bgIMG={"url('" + data.imgs[0] + "')"}
-                onClick={() => handleOpenModal({ data })}
-              />
-              <TitleIMG
-                key={data.title}
-                onClick={() => handleOpenModal({ data })}
-              >
-                {data.title}
-              </TitleIMG>
-            </SliderBox>
-          ))}
-      </Slider>
-    </Container>
-  )
+  try {
+    return (
+      <Container>
+        {isModalVisible ? (
+          <Modal OnClose={() => setIsModalVisible(false)} data={modalInfos} />
+        ) : null}
+        <Slider {...settings}>
+          {projects &&
+            projects.map(data => (
+              <SliderBox key={data.key}>
+                <CoverIMG
+                  key={data.imgs[0]}
+                  bgIMG={"url('" + data.imgs[0] + "')"}
+                  onClick={() => handleOpenModal({ data })}
+                />
+                <TitleIMG
+                  key={data.title}
+                  onClick={() => handleOpenModal({ data })}
+                >
+                  {data.title}
+                </TitleIMG>
+              </SliderBox>
+            ))}
+        </Slider>
+      </Container>
+    )
+  } catch {
+    return null
+  }
 }
 
 export default SliderProjects

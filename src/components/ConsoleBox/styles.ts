@@ -26,7 +26,10 @@ export const Container = styled.div<ContainerType>`
     width: 50vw;
   }
   @media (max-width: 768px) {
-    width: 82vw;
+    width: 88vw;
+  }
+  @media (max-width: 350px) {
+    width: 90vw;
   }
 `
 export const BoxContainer = styled.div<ContainerType2>`

@@ -11,6 +11,7 @@
   "dependencies": {
     "@cloudinary/react": "^1.2.2",
     "@cloudinary/url-gen": "^1.7.0",
+    "@sendgrid/mail": "^7.6.2",
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.26.1",
     "babel-plugin-inline-react-svg": "^2.0.1",
@@ -33,7 +34,6 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@sendgrid/mail": "^7.6.2",
     "@types/mongodb": "^4.0.7",
     "@types/node": "^17.0.21",
     "@types/nodemailer": "^6.4.4",

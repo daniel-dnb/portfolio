@@ -29,15 +29,17 @@ const Projects: NextPage = () => {
 
 export default Projects
 
-export const getStaticProps = wrapper.getStaticProps(store => async ctx => {
-  await axios
-    .get('http://localhost:3000/api/readProjects')
-    .then(res => {
-      store.dispatch(setProjectsData(res.data))
-    })
-    .catch(console.log)
+export const getServerSideProps = wrapper.getServerSideProps(
+  store => async ctx => {
+    await axios
+      .get('http://localhost:3000/api/readProjects')
+      .then(res => {
+        store.dispatch(setProjectsData(res.data))
+      })
+      .catch(e => console.log({ error: 'Something is wrong' }))
 
-  return {
-    props: {}
+    return {
+      props: {}
+    }
   }
-})
+)
