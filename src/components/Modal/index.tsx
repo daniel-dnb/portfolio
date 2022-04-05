@@ -11,6 +11,7 @@ import {
   SliderImage,
   SliderNavigatorImg,
   TechnologieBox,
+  TechnologieImg,
   TechnologieName,
   Title
 } from './styles'
@@ -108,12 +109,13 @@ export default function Modal({ OnClose = () => {}, data }: ModalProps) {
 
           {database.technologies.map(icon => (
             <TechnologieBox key={crypto.randomBytes(20).toString('hex')}>
-              <img
-                key={crypto.randomBytes(20).toString('hex')}
-                src={icon.url}
-                width="50"
-                alt={icon.alt}
-              />
+              <TechnologieImg>
+                <img
+                  key={crypto.randomBytes(20).toString('hex')}
+                  src={icon.url}
+                  alt={icon.alt}
+                />
+              </TechnologieImg>
               <TechnologieName key={crypto.randomBytes(20).toString('hex')}>
                 {icon.name}
               </TechnologieName>

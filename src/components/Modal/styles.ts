@@ -154,6 +154,19 @@ export const TechnologieBox = styled.div`
   margin-bottom: 20px;
 `
 
+export const TechnologieImg = styled.div`
+  display: flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 50px;
+    max-height: 50px;
+  }
+`
+
 export const TechnologieName = styled.p`
   margin-left: 15px;
   font: 500 1.6rem Roboto, sans-serif;
