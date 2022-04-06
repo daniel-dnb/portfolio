@@ -6,7 +6,7 @@ type ConsoleTextColorProps = {
 }
 
 export const ConsoleText = styled.div`
-  font: 400 1.4rem/138% 'Lucida Console';
+  font: 700 1.5rem/138% 'JetBrains Mono', sans-serif;
   color: ${props => props.theme.colors.text};
 
   @media (max-width: 768px) {
@@ -44,18 +44,18 @@ export const ConsoleTextColor = styled.span<ConsoleTextColorProps>`
   ${props =>
     props.Color === 'grey' &&
     css`
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: #686868;
     `}
   ${props =>
     props.Color === 'white' &&
     css`
-      font: 700 1.4rem/100% Consolas;
+      font: 700 1.4rem/100% 'JetBrains Mono', sans-serif;
     `}
     ${props =>
     props.Font === true &&
     css`
-      font: 800 1.4rem/138% NanumGothic, sans-serif;
+      font: 800 1.2rem/138% NanumGothic, sans-serif;
     `}
 `
 

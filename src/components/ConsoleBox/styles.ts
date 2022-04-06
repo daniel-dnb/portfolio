@@ -49,6 +49,7 @@ export const TitleBox = styled.div<ContainerType2>`
   border: 1px solid ${props => props.theme.colors.purple};
   border-bottom: 0;
   border-radius: 10px 10px 0px 0px;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -57,6 +58,11 @@ export const TitleBox = styled.div<ContainerType2>`
 export const ControlButtons = styled.div`
   display: flex;
   flex-direction: row;
+  position: absolute;
+
+  @media (max-width: 380px) {
+    position: relative;
+  }
 `
 
 export const Red = styled.div`
