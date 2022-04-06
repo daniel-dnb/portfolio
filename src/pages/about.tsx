@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import {
   AboutBackgroundText,
   Description,
@@ -106,3 +106,9 @@ const About: NextPage = () => {
 }
 
 export default About
+
+export const getStaticProps: GetStaticProps = async context => {
+  return {
+    props: {}
+  }
+}

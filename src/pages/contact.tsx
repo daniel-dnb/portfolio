@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import {
   ContactBackgroundText,
   Description,
@@ -56,3 +56,9 @@ const Contact: NextPage = () => {
 }
 
 export default Contact
+
+export const getStaticProps: GetStaticProps = async context => {
+  return {
+    props: {}
+  }
+}

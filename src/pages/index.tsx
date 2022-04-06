@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import ConsoleBox from '../components/ConsoleBox'
 import ConsoleHomePage from '../components/ConsoleHomePage'
@@ -72,3 +72,9 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getStaticProps: GetStaticProps = async context => {
+  return {
+    props: {}
+  }
+}
