@@ -28,7 +28,7 @@ const ContactInformations: React.FC<ContactInformationsProps> = props => {
         <PurpleCircle isThisLink={true}>
           <Email />
         </PurpleCircle>
-        <a href="#">daniielreis@live.com</a>
+        <a href="mailto: daniielreis@live.com">daniielreis@live.com</a>
       </EmailBox>
       <PhoneBox>
         <PurpleCircle>
