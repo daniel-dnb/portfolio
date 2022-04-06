@@ -28,7 +28,7 @@ export default Projects
 export const getServerSideProps = wrapper.getServerSideProps(
   store => async ctx => {
     await axios
-      .get('http://localhost:3000/api/readProjects')
+      .get(`${process.env.HOST}/api/readProjects`)
       .then(res => {
         store.dispatch(setProjectsData(res.data))
       })

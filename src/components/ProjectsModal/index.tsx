@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
@@ -45,6 +46,7 @@ export default function ProjectsModal({
   data
 }: ModalProps) {
   const database = data
+  const [isClicked, setIsClicked] = useState(false)
 
   function handleOutsideClick(e) {
     if (e.target.id === data.key) OnClose()
@@ -54,6 +56,7 @@ export default function ProjectsModal({
     dots: true,
     infinite: false,
     arrows: false,
+    draggable: false,
     speed: 200,
     rows: 1,
     slidesToShow: 1,
@@ -70,14 +73,14 @@ export default function ProjectsModal({
 
   return (
     <Container id={data.key} onClick={handleOutsideClick}>
-      <ModalBox key={crypto.randomBytes(20).toString('hex')}>
+      <ModalBox key={crypto.randomBytes(2).toString('hex')}>
         <Title key={data.title}>{data.title}</Title>
 
         <Slider {...settings}>
           {database.imgs.map(img => (
             <SliderBox key={img}>
               <SliderImage
-                key={crypto.randomBytes(20).toString('hex')}
+                key={crypto.randomBytes(2).toString('hex')}
                 src={img}
                 onClick={() => handleOpenImage(img)}
               />

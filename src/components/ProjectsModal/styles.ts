@@ -83,10 +83,11 @@ export const SliderBox = styled.div`
 
 export const SliderImage = styled.img`
   width: 42vw;
-  height: 35vh;
+  height: 42vh;
   object-fit: cover;
   object-position: 50% 0%;
   margin: 0 auto;
+  outline: 1px solid ${props => props.theme.colors.primary};
   transition: all 0.2s ease-in-out;
 
   :hover,

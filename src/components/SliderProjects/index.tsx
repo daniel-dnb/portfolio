@@ -29,6 +29,7 @@ const SliderProjects: React.FC = (props: any) => {
     dots: true,
     infinite: false,
     arrows: false,
+    draggable: false,
     speed: 200,
     rows: 2,
     slidesToShow: 3,

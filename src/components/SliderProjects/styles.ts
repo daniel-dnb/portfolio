@@ -42,6 +42,7 @@ export const CoverIMG = styled.div<CoverIMGProps>`
   background: ${props => props.bgIMG};
   background-size: cover;
   background-repeat: no-repeat;
+  outline: 1px solid ${props => props.theme.colors.primary};
 
   :hover {
     cursor: pointer;
