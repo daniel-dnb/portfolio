@@ -25,6 +25,11 @@ export const TopBarTitle = styled.div`
 export const NavButtons = styled.div`
   display: flex;
   flex-direction: row;
+  position: absolute;
+
+  @media (max-width: 450px) {
+    position: relative;
+  }
 `
 
 export const CircleRed = styled.div`
