@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
@@ -46,7 +45,6 @@ export default function ProjectsModal({
   data
 }: ModalProps) {
   const database = data
-  const [isClicked, setIsClicked] = useState(false)
 
   function handleOutsideClick(e) {
     if (e.target.id === data.key) OnClose()

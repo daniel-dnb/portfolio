@@ -78,16 +78,24 @@ const SideBar: React.FC = () => {
 
       <Nav>
         <li className={router.pathname == '/' ? 'active' : ''}>
-          <Link href="/">Home</Link>
+          <span onClick={() => activeMenu()}>
+            <Link href="/">Home</Link>
+          </span>
         </li>
         <li className={router.pathname == '/projects' ? 'active' : ''}>
-          <Link href="/projects">Projects</Link>
+          <span onClick={() => activeMenu()}>
+            <Link href="/projects">Projects</Link>
+          </span>
         </li>
         <li className={router.pathname == '/about' ? 'active' : ''}>
-          <Link href="/about">About</Link>
+          <span onClick={() => activeMenu()}>
+            <Link href="/about">About</Link>
+          </span>
         </li>
         <li className={router.pathname == '/contact' ? 'active' : ''}>
-          <Link href="/contact">Contact</Link>
+          <span onClick={() => activeMenu()}>
+            <Link href="/contact">Contact</Link>
+          </span>
         </li>
       </Nav>
 

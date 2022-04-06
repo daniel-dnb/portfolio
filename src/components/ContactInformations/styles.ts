@@ -83,7 +83,7 @@ export const LocationBox = styled.div`
   margin-bottom: 30px;
   span {
     margin-left: 20px;
-    font: 500 1.8rem Ubuntu, sans-serif;
+    font: 500 1.8rem Roboto, sans-serif;
     color: ${props => props.theme.colors.text};
   }
 `
@@ -92,7 +92,7 @@ export const EmailBox = styled(LocationBox)`
   a {
     text-decoration: none;
     margin-left: 20px;
-    font: 500 1.8rem Ubuntu, sans-serif;
+    font: 500 1.8rem Roboto, sans-serif;
     color: ${props => props.theme.colors.text};
 
     :hover {

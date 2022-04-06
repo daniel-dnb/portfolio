@@ -232,25 +232,35 @@ export const CloseButton = styled.button`
   width: 110px;
   height: 35px;
   margin: 0 auto;
+  background: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.primary};
   border: 2px solid ${props => props.theme.colors.primary};
   border-radius: 12px;
-  background: ${props => props.theme.colors.background};
   font: 700 1.6rem Roboto, sans-serif;
-  color: ${props => props.theme.colors.primary};
-  animation: text-focus-in 1s cubic-bezier(0.55, 0.085, 0.68, 0.53) both,
-    neon 1.5s alternate infinite ease-in-out;
 
   &:hover {
     cursor: pointer;
-    animation-play-state: paused;
+    transform: scale(1.009);
+    animation: activeButtonAnimation 0.5s ease-in-out infinite;
   }
 
-  @keyframes neon {
-    from {
-      filter: drop-shadow(0 0 2px ${props => props.theme.colors.primary});
+  :active {
+    animation-play-state: paused;
+    transform: scale(1.02);
+  }
+
+  @keyframes activeButtonAnimation {
+    0% {
+      box-shadow: 0 0 5px ${props => props.theme.colors.primary},
+        inset 0 0 5px ${props => props.theme.colors.primary};
     }
-    to {
-      filter: drop-shadow(0 0 5px ${props => props.theme.colors.primary});
+    50% {
+      box-shadow: 0 0 3px ${props => props.theme.colors.primary},
+        inset 0 0 3px ${props => props.theme.colors.primary};
+    }
+    100% {
+      box-shadow: 0 0 6px ${props => props.theme.colors.primary},
+        inset 0 0 6px ${props => props.theme.colors.primary};
     }
   }
 `
