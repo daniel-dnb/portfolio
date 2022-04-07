@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { HYDRATE } from 'next-redux-wrapper'
-import { AppState } from '..'
+import axios from 'axios'
+import { AppDispatch, AppThunk } from '..'
 
 interface TechnologiesProps {
   name: string
@@ -18,44 +18,38 @@ interface Props {
   technologies: TechnologiesProps[]
 }
 
-interface initialStateProps {
-  projects: Props[]
+interface DataProps {
+  data: Props[]
+  isLoading: boolean
 }
 
-const initialState: initialStateProps = {
-  projects: [
-    {
-      key: null,
-      title: null,
-      description: null,
-      github: null,
-      site: null,
-      imgs: [null],
-      technologies: [null]
-    }
-  ]
-}
+const initialState: DataProps = null
 
 export const ProjectsSlice = createSlice({
   name: 'projects',
   initialState,
   reducers: {
+    loadingPost: state => {
+      state.isLoading = true
+    },
     setProjectsData: (state, { payload }) => {
-      return payload
-    }
-  },
-  extraReducers: {
-    [HYDRATE]: (state, { payload }) => {
-      if (!payload) {
-        return state
-      }
-      return payload
+      state.data = [...payload]
+      state.isLoading = false
     }
   }
 })
 
-export const { setProjectsData } = ProjectsSlice.actions
+export function asyncSetProjects(): AppThunk {
+  return async function (dispatch: AppDispatch) {
+    await axios
+      .get('/api/readProjects')
+      .then(res => {
+        dispatch(setProjectsData(res.data))
+      })
+      .catch(console.log)
+  }
+}
 
-export const selectProjects = (state: AppState) => state
+export const { setProjectsData, loadingPost } = ProjectsSlice.actions
 
 export default ProjectsSlice.reducer

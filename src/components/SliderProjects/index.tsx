@@ -1,16 +1,30 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
-import { selectProjects } from '../../redux/store/slices/projects'
+import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
+import {
+  asyncSetProjects,
+  loadingPost
+} from '../../redux/store/slices/projects'
 import ProjectsModal from '../ProjectsModal'
 import { Circle, Container, CoverIMG, SliderBox, TitleIMG } from './styles'
 
 const SliderProjects: React.FC = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
   const [modalInfos, setModalInfos] = useState()
-  const { projects } = useSelector(selectProjects).projects
+  const dispatch = useAppDispatch()
+  const projects = useAppSelector((state: RootState) => state.projects.data)
+  const isLoading = useAppSelector(
+    (state: RootState) => state.projects.isLoading
+  )
+
+  useEffect(() => {
+    if (projects === undefined) {
+      dispatch(loadingPost())
+      dispatch(asyncSetProjects())
+    }
+  }, [])
 
   function handleOpenModal({ data }) {
     setIsModalVisible(true)
@@ -57,7 +71,9 @@ const SliderProjects: React.FC = (props: any) => {
     ]
   }
 
-  try {
+  if (isLoading) {
+    return <div>CARREGANDO...</div>
+  } else {
     return (
       <Container>
         {isModalVisible ? (
@@ -86,8 +102,6 @@ const SliderProjects: React.FC = (props: any) => {
         </Slider>
       </Container>
     )
-  } catch {
-    return null
   }
 }
 

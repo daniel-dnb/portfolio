@@ -3,13 +3,18 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import Router from 'next/router'
 import NProgress from 'nprogress'
+import { Provider } from 'react-redux'
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from 'styled-components'
 import SEO from '../../next-seo-config'
 import SideBar from '../components/SideBar'
 import { MenuProvider } from '../contexts/MenuContext'
-import { wrapper } from '../redux/store'
+import store from '../redux/store'
 import GlobalStyle from '../styles/global'
 import theme from '../styles/theme'
+
+let persistor = persistStore(store)
 
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
@@ -25,21 +30,25 @@ Router.events.on('routeChangeError', url => {
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <MenuProvider>
-      <ThemeProvider theme={theme}>
-        <DefaultSeo {...SEO} />
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-        </Head>
-        <SideBar />
-        <Component {...pageProps} />
-        <GlobalStyle />
-      </ThemeProvider>
-    </MenuProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <MenuProvider>
+          <ThemeProvider theme={theme}>
+            <DefaultSeo {...SEO} />
+            <Head>
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+              />
+            </Head>
+            <SideBar />
+            <Component {...pageProps} />
+            <GlobalStyle />
+          </ThemeProvider>
+        </MenuProvider>
+      </PersistGate>
+    </Provider>
   )
 }
 
-export default wrapper.withRedux(MyApp)
+export default MyApp
