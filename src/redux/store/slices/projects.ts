@@ -18,7 +18,7 @@ interface Props {
   technologies: TechnologiesProps[]
 }
 
-interface DataProps {
+export type DataProps = {
   data: Props[]
   isLoading: boolean
   error: boolean
