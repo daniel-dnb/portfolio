@@ -19,7 +19,9 @@ import {
 const Home: NextPage = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const projects: DataProps = useAppSelector((state: RootState) => state.projects)
+  const projects: DataProps = useAppSelector(
+    (state: RootState) => state.projects
+  )
 
   useEffect(() => {
     if (projects.data === undefined) {
