@@ -21,35 +21,51 @@ interface Props {
 interface DataProps {
   data: Props[]
   isLoading: boolean
+  error: boolean
 }
 
-const initialState: DataProps = null
+const initialState: DataProps = {
+  data: undefined,
+  isLoading: false,
+  error: false
+}
 
 export const ProjectsSlice = createSlice({
   name: 'projects',
   initialState,
   reducers: {
-    loadingPost: state => {
+    loadingPending: state => {
       state.isLoading = true
+      state.error = false
+    },
+    loadingSuccess: state => {
+      state.isLoading = false
+      state.error = false
+    },
+    loadingFail: state => {
+      state.isLoading = false
+      state.error = true
     },
     setProjectsData: (state, { payload }) => {
       state.data = [...payload]
-      state.isLoading = false
     }
   }
 })
 
 export function asyncSetProjects(): AppThunk {
   return async function (dispatch: AppDispatch) {
+    dispatch(loadingPending())
     await axios
       .get('/api/readProjects')
       .then(res => {
         dispatch(setProjectsData(res.data))
+        dispatch(loadingSuccess())
       })
-      .catch(console.log)
+      .catch(err => dispatch(loadingFail()))
   }
 }
 
-export const { setProjectsData, loadingPost } = ProjectsSlice.actions
+export const { setProjectsData, loadingPending, loadingSuccess, loadingFail } =
+  ProjectsSlice.actions
 
 export default ProjectsSlice.reducer
