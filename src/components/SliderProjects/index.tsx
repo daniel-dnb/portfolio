@@ -3,7 +3,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
-import { asyncSetProjects, DataProps } from '../../redux/store/slices/projects'
+import { asyncSetProjects } from '../../redux/store/slices/projects'
 import ProjectsModal from '../ProjectsModal'
 import {
   Animation,
@@ -23,9 +23,7 @@ const SliderProjects: React.FC = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
   const [modalInfos, setModalInfos] = useState()
   const dispatch = useAppDispatch()
-  const projects: DataProps = useAppSelector(
-    (state: RootState) => state.projects
-  )
+  const projects: any = useAppSelector((state: RootState) => state.projects)
 
   useEffect(() => {
     if (projects.data === undefined) {
