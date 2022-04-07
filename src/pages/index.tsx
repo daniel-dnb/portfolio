@@ -7,7 +7,7 @@ import { HomeBackgroundText } from '../components/HomeBackgroundText'
 import PageBackground from '../components/PageBackground'
 import PageHead from '../components/PageHead'
 import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
-import { asyncSetProjects } from '../redux/store/slices/projects'
+import { asyncSetProjects, DataProps } from '../redux/store/slices/projects'
 import {
   ConsoleContainer,
   Container,
@@ -19,10 +19,12 @@ import {
 const Home: NextPage = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const projects = useAppSelector((state: RootState) => state.projects.data)
+  const projects: DataProps = useAppSelector(
+    (state: RootState) => state.projects
+  )
 
   useEffect(() => {
-    if (projects[0].key === '') {
+    if (projects.data === undefined) {
       dispatch(asyncSetProjects())
     }
   }, [])

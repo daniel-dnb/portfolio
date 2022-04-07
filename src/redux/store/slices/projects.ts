@@ -18,22 +18,14 @@ interface Props {
   technologies: TechnologiesProps[]
 }
 
-interface DataProps {
-  data: [Props]
+export type DataProps = {
+  data: Props[]
   isLoading: boolean
   error: boolean
 }
 
 const initialState: DataProps = {
-  data: [
-    {
-      key: '',
-      title: '',
-      description: '',
-      imgs: [],
-      technologies: []
-    }
-  ],
+  data: undefined,
   isLoading: false,
   error: false
 }
@@ -55,7 +47,7 @@ export const ProjectsSlice = createSlice({
       state.error = true
     },
     setProjectsData: (state, { payload }) => {
-      state.data = payload
+      state.data = [...payload]
     }
   }
 })

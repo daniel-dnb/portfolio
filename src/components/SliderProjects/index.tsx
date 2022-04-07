@@ -3,7 +3,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
-import { asyncSetProjects } from '../../redux/store/slices/projects'
+import { asyncSetProjects, DataProps } from '../../redux/store/slices/projects'
 import ProjectsModal from '../ProjectsModal'
 import {
   Animation,
@@ -23,14 +23,12 @@ const SliderProjects: React.FC = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
   const [modalInfos, setModalInfos] = useState()
   const dispatch = useAppDispatch()
-  const isLoading = useAppSelector(
-    (state: RootState) => state.projects.isLoading
+  const projects: DataProps = useAppSelector(
+    (state: RootState) => state.projects
   )
-  const projects = useAppSelector((state: RootState) => state.projects.data)
-  const error = useAppSelector((state: RootState) => state.projects.error)
 
   useEffect(() => {
-    if (projects[0].key === '') {
+    if (projects.data === undefined) {
       dispatch(asyncSetProjects())
     }
   }, [])
@@ -80,7 +78,7 @@ const SliderProjects: React.FC = (props: any) => {
     ]
   }
 
-  if (isLoading) {
+  if (projects.isLoading) {
     return (
       <LoadingContainer>
         <Loading />
@@ -90,7 +88,7 @@ const SliderProjects: React.FC = (props: any) => {
       </LoadingContainer>
     )
   }
-  if (error === true) {
+  if (projects.error === true) {
     return (
       <>
         <ErrorContainer>
@@ -112,8 +110,8 @@ const SliderProjects: React.FC = (props: any) => {
           />
         ) : null}
         <Slider {...settings}>
-          {projects &&
-            projects.map(data => (
+          {projects.data &&
+            projects.data.map(data => (
               <SliderBox key={data.key}>
                 <CoverIMG
                   key={data.imgs[0]}
