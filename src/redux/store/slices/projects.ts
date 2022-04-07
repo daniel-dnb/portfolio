@@ -19,12 +19,16 @@ interface Props {
 }
 
 interface DataProps {
-  data: Props[]
+  data: [Props]
   isLoading: boolean
   error: boolean
 }
 
-const initialState: DataProps = null
+const initialState: DataProps = {
+  data: undefined,
+  isLoading: false,
+  error: false
+}
 
 export const ProjectsSlice = createSlice({
   name: 'projects',
@@ -43,7 +47,7 @@ export const ProjectsSlice = createSlice({
       state.error = true
     },
     setProjectsData: (state, { payload }) => {
-      state.data = [...payload]
+      state.data = payload
     }
   }
 })
