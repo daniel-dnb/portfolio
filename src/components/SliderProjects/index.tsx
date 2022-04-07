@@ -23,7 +23,7 @@ const SliderProjects: React.FC = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
   const [modalInfos, setModalInfos] = useState()
   const dispatch = useAppDispatch()
-  const projects = useAppSelector((state: RootState) => state.projects.data)
+  const projects = useAppSelector((state: RootState) => state.projects?.data)
   const isLoading = useAppSelector(
     (state: RootState) => state.projects.isLoading
   )
