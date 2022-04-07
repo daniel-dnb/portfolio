@@ -22,7 +22,7 @@ const Home: NextPage = () => {
   const projects = useAppSelector((state: RootState) => state.projects.data)
 
   useEffect(() => {
-    if (projects.length === 0) {
+    if (projects === undefined) {
       dispatch(asyncSetProjects())
     }
   }, [])

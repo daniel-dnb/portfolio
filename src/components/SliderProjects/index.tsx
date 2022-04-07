@@ -23,11 +23,14 @@ const SliderProjects: React.FC = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
   const [modalInfos, setModalInfos] = useState()
   const dispatch = useAppDispatch()
-  const projects = useAppSelector((state: RootState) => state.projects)
-  console.log(projects.data)
+  const projects = useAppSelector((state: RootState) => state.projects.data)
+  const isLoading = useAppSelector(
+    (state: RootState) => state.projects.isLoading
+  )
+  const error = useAppSelector((state: RootState) => state.projects.error)
 
   useEffect(() => {
-    if (projects.data.length === 0) {
+    if (projects === undefined) {
       dispatch(asyncSetProjects())
     }
   }, [])
@@ -77,7 +80,7 @@ const SliderProjects: React.FC = (props: any) => {
     ]
   }
 
-  if (projects.isLoading) {
+  if (isLoading) {
     return (
       <LoadingContainer>
         <Loading />
@@ -87,7 +90,7 @@ const SliderProjects: React.FC = (props: any) => {
       </LoadingContainer>
     )
   }
-  if (projects.error === true) {
+  if (error === true) {
     return (
       <>
         <ErrorContainer>
@@ -109,8 +112,8 @@ const SliderProjects: React.FC = (props: any) => {
           />
         ) : null}
         <Slider {...settings}>
-          {projects.data &&
-            projects.data.map(data => (
+          {projects &&
+            projects.map(data => (
               <SliderBox key={data.key}>
                 <CoverIMG
                   key={data.imgs[0]}
