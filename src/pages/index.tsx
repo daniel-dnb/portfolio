@@ -19,10 +19,10 @@ import {
 const Home: NextPage = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
-  const projects = useAppSelector((state: RootState) => state.projects.data)
+  const projects: any = useAppSelector((state: RootState) => state.projects)
 
   useEffect(() => {
-    if (projects === undefined) {
+    if (projects.data === undefined) {
       dispatch(asyncSetProjects())
     }
   }, [])
