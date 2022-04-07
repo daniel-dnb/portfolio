@@ -24,11 +24,7 @@ interface DataProps {
   error: boolean
 }
 
-const initialState: DataProps = {
-  data: undefined,
-  isLoading: false,
-  error: false
-}
+const initialState: DataProps = null
 
 export const ProjectsSlice = createSlice({
   name: 'projects',
