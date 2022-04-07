@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { HYDRATE } from 'next-redux-wrapper'
-import { AppState } from '..'
+import axios from 'axios'
+import { AppDispatch, AppThunk } from '..'
 
 interface TechnologiesProps {
   name: string
@@ -18,44 +18,54 @@ interface Props {
   technologies: TechnologiesProps[]
 }
 
-interface initialStateProps {
-  projects: Props[]
+interface DataProps {
+  data: Props[]
+  isLoading: boolean
+  error: boolean
 }
 
-const initialState: initialStateProps = {
-  projects: [
-    {
-      key: null,
-      title: null,
-      description: null,
-      github: null,
-      site: null,
-      imgs: [null],
-      technologies: [null]
-    }
-  ]
+const initialState: DataProps = {
+  data: undefined,
+  isLoading: false,
+  error: false
 }
 
 export const ProjectsSlice = createSlice({
   name: 'projects',
   initialState,
   reducers: {
+    loadingPending: state => {
+      state.isLoading = true
+      state.error = false
+    },
+    loadingSuccess: state => {
+      state.isLoading = false
+      state.error = false
+    },
+    loadingFail: state => {
+      state.isLoading = false
+      state.error = true
+    },
     setProjectsData: (state, { payload }) => {
-      return payload
-    }
-  },
-  extraReducers: {
-    [HYDRATE]: (state, { payload }) => {
-      if (!payload) {
-        return state
-      }
-      return payload
+      state.data = [...payload]
     }
   }
 })
 
-export const { setProjectsData } = ProjectsSlice.actions
+export function asyncSetProjects(): AppThunk {
+  return async function (dispatch: AppDispatch) {
+    dispatch(loadingPending())
+    await axios
+      .get('/api/readProjects')
+      .then(res => {
+        dispatch(setProjectsData(res.data))
+        dispatch(loadingSuccess())
+      })
+      .catch(err => dispatch(loadingFail()))
+  }
+}
 
-export const selectProjects = (state: AppState) => state
+export const { setProjectsData, loadingPending, loadingSuccess, loadingFail } =
+  ProjectsSlice.actions
 
 export default ProjectsSlice.reducer

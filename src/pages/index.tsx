@@ -1,10 +1,13 @@
 import { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import ConsoleBox from '../components/ConsoleBox'
 import ConsoleHomePage from '../components/ConsoleHomePage'
 import { HomeBackgroundText } from '../components/HomeBackgroundText'
 import PageBackground from '../components/PageBackground'
 import PageHead from '../components/PageHead'
+import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
+import { asyncSetProjects } from '../redux/store/slices/projects'
 import {
   ConsoleContainer,
   Container,
@@ -15,6 +18,14 @@ import {
 
 const Home: NextPage = () => {
   const router = useRouter()
+  const dispatch = useAppDispatch()
+  const projects = useAppSelector((state: RootState) => state.projects.data)
+
+  useEffect(() => {
+    if (projects === undefined) {
+      dispatch(asyncSetProjects())
+    }
+  }, [])
 
   return (
     <PageHead title="Daniel Bernardes" description="Front-End Developer">

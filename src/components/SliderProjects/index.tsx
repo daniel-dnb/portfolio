@@ -1,16 +1,35 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
-import { selectProjects } from '../../redux/store/slices/projects'
+import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
+import { asyncSetProjects } from '../../redux/store/slices/projects'
 import ProjectsModal from '../ProjectsModal'
-import { Circle, Container, CoverIMG, SliderBox, TitleIMG } from './styles'
+import {
+  Animation,
+  Circle,
+  Container,
+  CoverIMG,
+  ErrorContainer,
+  ErrorText,
+  Loading,
+  LoadingContainer,
+  LoadingText,
+  SliderBox,
+  TitleIMG
+} from './styles'
 
 const SliderProjects: React.FC = (props: any) => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
   const [modalInfos, setModalInfos] = useState()
-  const { projects } = useSelector(selectProjects).projects
+  const dispatch = useAppDispatch()
+  const projects = useAppSelector((state: RootState) => state.projects)
+
+  useEffect(() => {
+    if (projects.data === undefined) {
+      dispatch(asyncSetProjects())
+    }
+  }, [])
 
   function handleOpenModal({ data }) {
     setIsModalVisible(true)
@@ -57,7 +76,29 @@ const SliderProjects: React.FC = (props: any) => {
     ]
   }
 
-  try {
+  if (projects.isLoading) {
+    return (
+      <LoadingContainer>
+        <Loading />
+        <LoadingText>
+          Loading<Animation>...</Animation>
+        </LoadingText>
+      </LoadingContainer>
+    )
+  }
+  if (projects.error === true) {
+    return (
+      <>
+        <ErrorContainer>
+          <img src="/PageNotFound.png" />
+          <ErrorText>
+            The page you’re looking for is currently under maintenance and will
+            be back soon.
+          </ErrorText>
+        </ErrorContainer>
+      </>
+    )
+  } else {
     return (
       <Container>
         {isModalVisible ? (
@@ -67,8 +108,8 @@ const SliderProjects: React.FC = (props: any) => {
           />
         ) : null}
         <Slider {...settings}>
-          {projects &&
-            projects.map(data => (
+          {projects.data &&
+            projects.data.map(data => (
               <SliderBox key={data.key}>
                 <CoverIMG
                   key={data.imgs[0]}
@@ -86,8 +127,6 @@ const SliderProjects: React.FC = (props: any) => {
         </Slider>
       </Container>
     )
-  } catch {
-    return null
   }
 }
 
