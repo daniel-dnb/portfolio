@@ -25,7 +25,7 @@ interface DataProps {
 }
 
 const initialState: DataProps = {
-  data: null,
+  data: [],
   isLoading: false,
   error: false
 }

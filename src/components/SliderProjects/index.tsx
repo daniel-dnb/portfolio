@@ -24,9 +24,10 @@ const SliderProjects: React.FC = (props: any) => {
   const [modalInfos, setModalInfos] = useState()
   const dispatch = useAppDispatch()
   const projects = useAppSelector((state: RootState) => state.projects)
+  console.log(projects.data)
 
   useEffect(() => {
-    if (projects.data === null) {
+    if (projects.data.length === 0) {
       dispatch(asyncSetProjects())
     }
   }, [])
