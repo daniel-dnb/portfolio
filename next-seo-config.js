@@ -14,9 +14,7 @@ const SEO = {
     images: [
       {
         url: 'https://www.danielbnd.com/me.jpg',
-        alt: title,
-        width: 947,
-        height: 758
+        alt: title
       }
     ]
   }
