@@ -26,7 +26,7 @@ export const store = configureStore({
   reducer: {
     projects: persistedProjectsReducer
   },
-  devTools: true,
+  devTools: false,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
