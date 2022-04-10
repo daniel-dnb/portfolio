@@ -13,7 +13,7 @@ const PageHead: NextPage<PageHeadProps> = ({
   children
 }) => {
   const router = useRouter()
-  const url = `https://danielbnd.com${router.pathname}`
+  const url = `https://www.danielbnd.com${router.pathname}`
 
   return (
     <>
