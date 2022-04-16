@@ -1,22 +1,31 @@
 const title = 'Daniel Bernardes — Front-End Developer.'
-const description = 'Brazilian front-end developer.'
+const description =
+  'Brazilian front-end developer who loves to create innovative solutions.'
+const url = 'https://www.danielbnd.com'
 
 const SEO = {
   title,
   description,
-  caconical: 'https://www.danielbnd.com',
+  caconical: url,
   openGraph: {
+    url: url,
     type: 'website',
-    locale: 'pt_BR',
-    url: 'https://www.danielbnd.com',
     title,
+    locale: 'pt_BR',
     description,
     images: [
       {
-        url: 'https://www.danielbnd.com/me.jpg',
-        alt: title
+        url: `${url}/banner.png`,
+        alt: title,
+        width: 1280,
+        height: 720
       }
     ]
+  },
+  twitter: {
+    site: '@dann_bnd',
+    handle: '@dann_bnd',
+    cardType: 'summary_large_image'
   }
 }
 
