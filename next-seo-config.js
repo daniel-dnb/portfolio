@@ -21,11 +21,6 @@ const SEO = {
         height: 720
       }
     ]
-  },
-  twitter: {
-    site: '@dann_bnd',
-    handle: '@dann_bnd',
-    cardType: 'summary_large_image'
   }
 }
 
