@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import styled, { css } from 'styled-components'
-import AvatarSVG from '../../assets/avatar.svg'
 import GithubSVG from '../../assets/Github.svg'
 import InstagramSVG from '../../assets/Instagram.svg'
 import LinkedinSVG from '../../assets/Linkedin.svg'
@@ -14,7 +13,7 @@ type MobileMenuProps = {
   status: string
 }
 
-export const Avatar = styled(AvatarSVG)`
+export const Avatar = styled.div`
   margin-top: 60px;
   position: relative;
 `

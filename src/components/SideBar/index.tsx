@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
@@ -60,9 +61,14 @@ const SideBar: React.FC = () => {
 
   return (
     <Container isMenuActive={isMenuActive} isNavBarShowing={isNavBarShowing}>
-      <div>
-        <Avatar />
-      </div>
+      <Avatar>
+        <Image
+          src="/avatar.png"
+          alt="Avatar picture"
+          width={200}
+          height={200}
+        />
+      </Avatar>
 
       <Menu>
         <Title>Daniel Bernardes</Title>
