@@ -39,6 +39,10 @@ export const CircleRed = styled.div`
   border-radius: 50%;
   margin-left: 6px;
   margin-right: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const CicleYellow = styled.div`

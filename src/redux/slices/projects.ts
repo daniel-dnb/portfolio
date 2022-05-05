@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { AppDispatch, AppThunk } from '..'
+import { AppDispatch, AppThunk } from '../store'
 
 interface TechnologiesProps {
   name: string

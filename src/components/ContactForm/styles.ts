@@ -14,13 +14,13 @@ export const Input = styled(Field)`
   width: 100%;
   height: 45px;
   color: ${props => props.theme.colors.text};
-  background: #2b2b2b;
+  background: ${props => props.theme.colors.background};
   border-radius: 10px;
   border-bottom: 0;
 
   ::placeholder {
     font: 600 18px Ubuntu, sans-serif;
-    color: #757575;
+    color: #71717a;
   }
 `
 
@@ -29,9 +29,11 @@ export const BottomBar = styled.div`
 
   .bottom-bar {
     position: absolute;
-    margin-top: -14px;
-    height: 3px;
+    margin-top: -16px;
+    height: 6px;
     width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 
   .name-active {
@@ -86,10 +88,10 @@ export const BottomBar = styled.div`
 `
 
 export const Btn = styled.button`
-  width: 220px;
+  width: 100%;
   height: 50px;
-  margin: 5px 0;
-  background: ${props => props.theme.colors.background2};
+  margin: 8px 0;
+  background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.primary};
   border: 1px solid ${props => props.theme.colors.primary};
   border-radius: 10px;

@@ -23,7 +23,7 @@ const PageBackground: React.FC = props => {
     <Container isMenuActive={isMenuActive}>
       <TopBar>
         <NavButtons>
-          <CircleRed />
+          <CircleRed onClick={() => router.push('/login')} />
           <CicleYellow />
           <CircleGreen />
         </NavButtons>

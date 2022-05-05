@@ -7,7 +7,7 @@ import { HomeBackgroundText } from '../components/HomeBackgroundText'
 import PageBackground from '../components/PageBackground'
 import PageHead from '../components/PageHead'
 import { RootState, useAppDispatch, useAppSelector } from '../redux/store'
-import { asyncSetProjects, DataProps } from '../redux/store/slices/projects'
+import { asyncSetProjects, DataProps } from '../redux/slices/projects'
 import {
   ConsoleContainer,
   Container,

@@ -13,14 +13,17 @@ import {
 import storage from 'redux-persist/lib/storage'
 import projectsReducer from './slices/projects'
 
-const persistConfig = {
+const persistedProjectsConfig = {
   timeout: 100,
-  key: 'root',
+  key: 'projects',
   version: 1,
   storage
 }
 
-const persistedProjectsReducer = persistReducer(persistConfig, projectsReducer)
+const persistedProjectsReducer = persistReducer(
+  persistedProjectsConfig,
+  projectsReducer
+)
 
 export const store = configureStore({
   reducer: {
