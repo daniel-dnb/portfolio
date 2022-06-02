@@ -41,7 +41,7 @@ export const BottomBar = styled.div`
     animation: animationBar 0.3s ease-in-out forwards;
   }
   .name-red {
-    background: tomato;
+    background: ${props => props.theme.colors.red};
   }
 
   .email-active {
@@ -49,7 +49,7 @@ export const BottomBar = styled.div`
     animation: animationBar 0.3s ease-in-out forwards;
   }
   .email-red {
-    background: tomato;
+    background: ${props => props.theme.colors.red};
   }
 
   .subject-active {
@@ -57,7 +57,7 @@ export const BottomBar = styled.div`
     animation: animationBar 0.3s ease-in-out forwards;
   }
   .subject-red {
-    background: tomato;
+    background: ${props => props.theme.colors.red};
   }
 
   .message-active {
@@ -65,7 +65,7 @@ export const BottomBar = styled.div`
     animation: animationBar 0.3s ease-in-out forwards;
   }
   .message-red {
-    background: tomato;
+    background: ${props => props.theme.colors.red};
   }
 
   @keyframes animationBar {

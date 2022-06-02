@@ -58,6 +58,10 @@ export const CircleGreen = styled.div`
   height: 13px;
   background: #4ef979;
   border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const PageContainer = styled.div`

@@ -1,33 +1,18 @@
 import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
-  width: 100vw - 300px;
-  min-height: 100vh;
-  overflow-y: hidden;
-  margin-left: 300px;
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-    min-width: 356px;
-    padding-top: 80px;
-    margin-left: 0;
-  }
+  padding-left: 1.55vw;
+  padding-top: 5px;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 export const Title = styled.h1`
   margin-left: 2.2vw;
   font: 700 5rem Ubuntu, sans-serif;
   color: ${({ theme }) => theme.colors.primary};
-`
-
-export const Content = styled.div`
-  min-height: 100vh;
-  border-left: 1px solid ${props => props.theme.colors.purple};
-  background: ${props => props.theme.colors.background};
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `
 
 export const LoginBox = styled.div`
@@ -70,7 +55,7 @@ interface InputPros {
 
 export const Input = styled.input<InputPros>`
   outline: none;
-  width: 32rem;
+  width: 48rem;
   height: 100%;
   background: ${props => props.theme.colors.background2};
   border: 2px solid ${props => props.theme.colors.primary};
@@ -90,6 +75,23 @@ export const Input = styled.input<InputPros>`
     css`
       border-color: ${props => props.theme.colors.red};
     `}
+
+  ::placeholder {
+    color: #71717a;
+  }
+`
+
+export const TextArea = styled.textarea`
+  outline: none;
+  width: 48rem;
+  height: 16rem;
+  background: ${props => props.theme.colors.background2};
+  border: 2px solid ${props => props.theme.colors.primary};
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  font: 600 1.6rem Ubuntu, sans-serif;
+  color: ${props => props.theme.colors.text};
+  resize: none;
 
   ::placeholder {
     color: #71717a;

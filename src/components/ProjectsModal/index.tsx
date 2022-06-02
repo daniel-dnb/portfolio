@@ -54,7 +54,7 @@ export default function ProjectsModal({
     dots: true,
     infinite: false,
     arrows: false,
-    draggable: false,
+    draggable: true,
     speed: 200,
     rows: 1,
     slidesToShow: 1,
@@ -65,10 +65,6 @@ export default function ProjectsModal({
     )
   }
 
-  function handleOpenImage(url) {
-    window.open(url, '_blank').focus()
-  }
-
   return (
     <Container id={data.key} onClick={handleOutsideClick}>
       <ModalBox key={crypto.randomBytes(2).toString('hex')}>
@@ -77,11 +73,12 @@ export default function ProjectsModal({
         <Slider {...settings}>
           {database.imgs.map(img => (
             <SliderBox key={img}>
-              <SliderImage
-                key={crypto.randomBytes(2).toString('hex')}
-                src={img}
-                onClick={() => handleOpenImage(img)}
-              />
+              <a href={img} target="_blank">
+                <SliderImage
+                  key={crypto.randomBytes(2).toString('hex')}
+                  src={img}
+                />
+              </a>
             </SliderBox>
           ))}
         </Slider>

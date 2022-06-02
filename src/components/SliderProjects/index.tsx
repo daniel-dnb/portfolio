@@ -113,17 +113,13 @@ const SliderProjects: React.FC = (props: any) => {
           {projects.data &&
             projects.data.map(data => (
               <SliderBox key={data.key}>
-                <CoverIMG
-                  key={data.imgs[0]}
-                  bgIMG={"url('" + data.imgs[0] + "')"}
-                  onClick={() => handleOpenModal({ data })}
-                />
-                <TitleIMG
-                  key={data.title}
-                  onClick={() => handleOpenModal({ data })}
-                >
-                  {data.title}
-                </TitleIMG>
+                <span onClick={() => handleOpenModal({ data })}>
+                  <CoverIMG
+                    key={data.imgs[0]}
+                    bgIMG={"url('" + data.imgs[0] + "')"}
+                  />
+                  <TitleIMG key={data.title}>{data.title}</TitleIMG>
+                </span>
               </SliderBox>
             ))}
         </Slider>

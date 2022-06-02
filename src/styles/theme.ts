@@ -5,7 +5,8 @@ const theme = {
     text: '#f4f4f5',
     primary: '#40DABF',
     purple: '#8686E3',
-    pink: '#DA79C6'
+    pink: '#DA79C6',
+    red: '#ff474c'
   }
 }
 

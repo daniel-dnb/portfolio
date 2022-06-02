@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { connectToDatabase } from '../../lib/mongodb'
+import prisma from '../../lib/prisma'
 
 export default async function handler(
   req: NextApiRequest,
@@ -7,9 +7,7 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     try {
-      const { db } = await connectToDatabase()
-
-      const projects = await db.collection('projects').find({}).toArray()
+      const projects = await prisma.projects.findMany()
 
       res.status(200).json(projects)
     } catch {

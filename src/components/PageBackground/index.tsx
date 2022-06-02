@@ -1,7 +1,10 @@
-import { useRouter } from 'next/router'
 import { useContext } from 'react'
-import ReactIMG from '../../assets/React.svg'
+
+import { useRouter } from 'next/router'
+import { signOut, useSession } from 'next-auth/react'
+
 import { MenuContext } from '../../contexts/MenuContext'
+import ReactIMG from '../../assets/React.svg'
 import {
   CicleYellow,
   CircleGreen,
@@ -19,20 +22,19 @@ const PageBackground: React.FC = props => {
   const router = useRouter()
   const { isMenuActive } = useContext(MenuContext)
 
+  const { data: session } = useSession()
+
   return (
     <Container isMenuActive={isMenuActive}>
       <TopBar>
         <NavButtons>
-          <CircleRed onClick={() => router.push('/login')} />
+          {session ? <CircleRed onClick={() => signOut()} /> : <CircleRed />}
           <CicleYellow />
-          <CircleGreen />
+          <CircleGreen onClick={() => router.push('/signin')} />
         </NavButtons>
         <TopBarTitle>
-          {router.pathname == '/' ? 'index.tsx' : ''}
-          {router.pathname == '/projects' ? 'projects.tsx' : ''}
-          {router.pathname == '/about' ? 'about.tsx' : ''}
-          {router.pathname == '/contact' ? 'contact.tsx' : ''} - portfolio -
-          Visual Studio Code
+          {router.pathname == '/' ? 'index' : router.pathname.replace('/', '')}
+          .tsx - portfolio - Visual Studio Code
         </TopBarTitle>
       </TopBar>
       <PageContainer>
