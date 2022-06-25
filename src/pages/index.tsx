@@ -30,7 +30,10 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-    <PageHead title="Daniel Bernardes" description="Front-End Developer">
+    <PageHead
+      title="Daniel Bernardes"
+      description="Hi, i'm Daniel Bernardes. I'm a Brazilian frontend developer."
+    >
       <PageBackground>
         <Container>
           <Grid>

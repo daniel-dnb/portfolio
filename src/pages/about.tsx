@@ -23,7 +23,10 @@ import {
 
 const About: NextPage = () => {
   return (
-    <PageHead title="Daniel Bernardes — About" description="About me">
+    <PageHead
+      title="Daniel Bernardes — About"
+      description="Hi, i'm Daniel Bernardes. I'm a Brazilian frontend developer. About me."
+    >
       <PageBackground>
         <Container>
           <Grid>

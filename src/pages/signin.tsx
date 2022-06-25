@@ -82,7 +82,10 @@ const SignIn: NextPage = () => {
   }
 
   return (
-    <PageHead title="Daniel Bernardes — Login" description="Login">
+    <PageHead
+      title="Daniel Bernardes — Login"
+      description="Hi, i'm Daniel Bernardes. I'm a Brazilian frontend developer. Login."
+    >
       <S.Container>
         <S.Content>
           <S.LoginBox>

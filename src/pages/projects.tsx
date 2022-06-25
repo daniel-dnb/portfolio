@@ -7,7 +7,10 @@ import { Container, Title } from '../styles/pages/Projects'
 
 const Projects: NextPage = () => {
   return (
-    <PageHead title="Daniel Bernardes — Projects" description="My projects">
+    <PageHead
+      title="Daniel Bernardes — Projects"
+      description="Hi, i'm Daniel Bernardes. I'm a Brazilian frontend developer. My projects."
+    >
       <PageBackground>
         <Container>
           <ProjectsBackgroundText>

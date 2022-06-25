@@ -20,7 +20,10 @@ import {
 
 const Contact: NextPage = () => {
   return (
-    <PageHead title="Daniel Bernardes — Contact" description="Contact me">
+    <PageHead
+      title="Daniel Bernardes — Contact"
+      description="Hi, i'm Daniel Bernardes. I'm a Brazilian frontend developer. Contact me."
+    >
       <PageBackground>
         <Container>
           <Grid>

@@ -21,7 +21,22 @@ const SEO = {
         height: 720
       }
     ]
-  }
+  },
+  additionalMetaTags: [
+    {
+      property: 'dc:creator',
+      content: 'Daniel Bernardes'
+    },
+    {
+      name: 'application-name',
+      content: 'Daniel Bernardes'
+    },
+    {
+      name: 'keywords',
+      content:
+        'Daniel, Daniel Bernardes, danielbnd, daniel bnd, Front-End, frontend, programador, developer, rio de janeiro, rj, sites, web, freelance web developer rio de janeiro'
+    }
+  ]
 }
 
 export default SEO
