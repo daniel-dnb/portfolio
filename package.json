@@ -22,7 +22,7 @@
     "formik": "^2.2.9",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.4.1",
-    "mongoose": "^6.2.9",
+    "mongoose": "^6.4.6",
     "next": "^12.1.4",
     "next-auth": "^4.10.3",
     "next-images": "^1.8.4",
