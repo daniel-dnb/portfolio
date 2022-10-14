@@ -1,7 +1,7 @@
 const title = 'Daniel Bernardes — Front-End Developer.'
 const description =
   'Brazilian front-end developer who loves to create innovative solutions.'
-const url = 'https://www.danielbnd.com'
+const url = 'https://danielbnd.com'
 
 const SEO = {
   title,
@@ -35,6 +35,10 @@ const SEO = {
       name: 'keywords',
       content:
         'Daniel, Daniel Bernardes, danielbnd, daniel bnd, Front-End, frontend, programador, developer, rio de janeiro, rj, sites, web, freelance web developer rio de janeiro'
+    },
+    {
+      name: 'twitter:image',
+      content: `${url}/banner.png`
     }
   ]
 }
