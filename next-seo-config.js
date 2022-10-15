@@ -39,6 +39,10 @@ const SEO = {
     {
       name: 'twitter:image',
       content: `${url}/banner.png`
+    },
+    {
+      name: 'twitter:description',
+      content:description
     }
   ]
 }
