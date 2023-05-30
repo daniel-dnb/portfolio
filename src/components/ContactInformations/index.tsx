@@ -30,12 +30,6 @@ const ContactInformations: React.FC<ContactInformationsProps> = props => {
         </PurpleCircle>
         <a href="mailto: daniielreis@live.com">daniielreis@live.com</a>
       </EmailBox>
-      <PhoneBox>
-        <PurpleCircle>
-          <Phone />
-        </PurpleCircle>
-        <span>+55 21 9 7669-4365</span>
-      </PhoneBox>
       <ContactIMG Side={props.Side} />
     </Container>
   )
