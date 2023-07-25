@@ -16,6 +16,11 @@ type MobileMenuProps = {
 export const Avatar = styled.div`
   margin-top: 60px;
   position: relative;
+  width: 200px;
+  height: 200px;
+  border: 4px solid ${props => props.theme.colors.primary};
+  border-radius: 100%;
+  overflow: hidden;
 `
 
 export const Menu = styled.div`
