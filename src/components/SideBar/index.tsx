@@ -106,13 +106,13 @@ const SideBar: React.FC = () => {
       </Nav>
 
       <SocialMedias>
-        <a href="https://www.linkedin.com/in/daniel-bnd/" target="_blank">
+        <a href="https://www.linkedin.com/in/daniel-dnb/" target="_blank">
           <Linkedin />
         </a>
-        <a href="https://github.com/daniel-bnd/" target="_blank">
+        <a href="https://github.com/daniel-dnb/" target="_blank">
           <Github />
         </a>
-        <a href="https://www.instagram.com/dann_bnd/" target="_blank">
+        <a href="https://www.instagram.com/dann_dnb/" target="_blank">
           <Instagram />
         </a>
       </SocialMedias>
