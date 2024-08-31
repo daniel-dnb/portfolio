@@ -25,7 +25,10 @@ export const getServerSideProps: GetServerSideProps = async context => {
   }
 
   return {
-    props: {}
+    redirect: {
+      permanent: false,
+      destination: '/'
+    }
   }
 }
 
