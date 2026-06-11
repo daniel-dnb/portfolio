@@ -1,16 +1,16 @@
-import { NextPage } from 'next'
-import { TextColor } from './styles'
+import type { FC, PropsWithChildren } from 'react'
+import { TextColor } from '../../theme/backgroundText'
 
-const Title: NextPage = ({ children }) => {
+const Title: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <TextColor Color="white">{'<'}</TextColor>h2
-      <TextColor Color="white">{'>'}</TextColor>
+      <TextColor color="white">{'<'}</TextColor>h2
+      <TextColor color="white">{'>'}</TextColor>
       {children}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <TextColor Color="white">{'</'}</TextColor>h2
-      <TextColor Color="white">{'>'}</TextColor>
+      <TextColor color="white">{'</'}</TextColor>h2
+      <TextColor color="white">{'>'}</TextColor>
       <br />
     </>
   )

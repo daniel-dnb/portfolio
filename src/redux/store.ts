@@ -1,4 +1,10 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import {
+  Action,
+  configureStore,
+  ThunkAction,
+  ThunkDispatch,
+  UnknownAction
+} from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import {
   FLUSH,
@@ -10,14 +16,35 @@ import {
   REGISTER,
   REHYDRATE
 } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 import projectsReducer from './slices/projects'
+
+function createStorage() {
+  if (typeof window === 'undefined') {
+    return {
+      getItem: (_key: string) => Promise.resolve(null),
+      setItem: (_key: string, value: string) => Promise.resolve(value),
+      removeItem: (_key: string) => Promise.resolve()
+    }
+  }
+
+  return {
+    getItem: (key: string) => Promise.resolve(window.localStorage.getItem(key)),
+    setItem: (key: string, value: string) => {
+      window.localStorage.setItem(key, value)
+      return Promise.resolve(value)
+    },
+    removeItem: (key: string) => {
+      window.localStorage.removeItem(key)
+      return Promise.resolve()
+    }
+  }
+}
 
 const persistedProjectsConfig = {
   timeout: 100,
   key: 'projects',
   version: 1,
-  storage
+  storage: createStorage()
 }
 
 const persistedProjectsReducer = persistReducer(
@@ -39,7 +66,7 @@ export const store = configureStore({
 })
 
 export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = ThunkDispatch<RootState, unknown, UnknownAction>
 export type AppThunk = ThunkAction<void, RootState, null, Action<string>>
 
 export const useAppDispatch = () => useDispatch<AppDispatch>()
@@ -47,4 +74,4 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export default store
 
-export let persistor = persistStore(store)
+export const createPersistor = () => persistStore(store)

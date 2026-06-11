@@ -1,37 +1,37 @@
-import React from 'react'
-import { BackgroundText, Content, TextColor } from './styles'
+import type { FC, PropsWithChildren } from 'react'
+import { BackgroundText, TextColor } from '../../theme/backgroundText'
 
-const ProjectsBackgroundText: React.FC = ({ children }) => {
+const ProjectsBackgroundText: FC<PropsWithChildren> = ({ children }) => {
   return (
     <BackgroundText>
       import
-      <TextColor Color="white">{' React'}</TextColor> from{' '}
-      <TextColor Color="yellow">{"'react'"}</TextColor>
+      <TextColor color="white">{' React'}</TextColor> from{' '}
+      <TextColor color="yellow">{"'react'"}</TextColor>
       <br />
       <br />
       const
-      <TextColor Color="blue"> Projects</TextColor>:{' '}
-      <TextColor Color="purple">React.FC</TextColor> ={' '}
-      <TextColor Color="yellow">{'()'}</TextColor> {'=>'}{' '}
-      <TextColor Color="yellow">{'{'}</TextColor>
+      <TextColor color="blue"> Projects</TextColor>:{' '}
+      <TextColor color="purple">React.FC</TextColor> ={' '}
+      <TextColor color="yellow">{'()'}</TextColor> {'=>'}{' '}
+      <TextColor color="yellow">{'{'}</TextColor>
       <br />
       &nbsp;&nbsp;{'return ('}
       <br />
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <TextColor Color="white">{'<'}</TextColor>div
-      <TextColor Color="white">{'>'}</TextColor>
-      <Content>{children}</Content>
+      <TextColor color="white">{'<'}</TextColor>div
+      <TextColor color="white">{'>'}</TextColor>
+      <div>{children}</div>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <TextColor Color="white">{'</'}</TextColor>div
-      <TextColor Color="white">{'>'}</TextColor>
+      <TextColor color="white">{'</'}</TextColor>div
+      <TextColor color="white">{'>'}</TextColor>
       <br />
       &nbsp;&nbsp;{')'}
       <br />
-      <TextColor Color="yellow">{'}'}</TextColor>
+      <TextColor color="yellow">{'}'}</TextColor>
       <br />
       <br />
       export default
-      <TextColor Color="blue"> Projects</TextColor>
+      <TextColor color="blue"> Projects</TextColor>
     </BackgroundText>
   )
 }

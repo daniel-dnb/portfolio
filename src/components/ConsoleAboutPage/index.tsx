@@ -1,30 +1,29 @@
-import { NextPage } from 'next'
-import { Container } from './styles'
+import type { FC } from 'react'
 
-const ConsoleAboutPage: NextPage = () => {
+const ConsoleAboutPage: FC = () => {
   return (
-    <Container>
+    <div className="console-about">
       Front-end
       <br />
       <div className="bar">
-        <div className="Front-end"></div>
+        <div className="Front-end" />
       </div>
       ReactJS
       <br />
       <div className="bar">
-        <div className="ReactJS"></div>
+        <div className="ReactJS" />
       </div>
-      NextJS
+      TanStack Start
       <br />
       <div className="bar">
-        <div className="NextJS"></div>
+        <div className="NextJS" />
       </div>
       Back-end
       <br />
       <div className="bar last">
-        <div className="Back-end"></div>
+        <div className="Back-end" />
       </div>
-    </Container>
+    </div>
   )
 }
 

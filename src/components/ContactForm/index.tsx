@@ -1,11 +1,10 @@
 import axios from 'axios'
-import { Form, Formik } from 'formik'
-import { NextPage } from 'next'
+import { Field, Form, Formik } from 'formik'
+import type { FC } from 'react'
 import { useState } from 'react'
 import * as yup from 'yup'
-import { BottomBar, Btn, Input } from './styles'
 
-const ContactForm: NextPage = () => {
+const ContactForm: FC = () => {
   const [nameError, setNameError] = useState('bottom-bar')
   const [emailError, setEmailError] = useState('bottom-bar')
   const [subjectError, setSubjectError] = useState('bottom-bar')
@@ -47,96 +46,99 @@ const ContactForm: NextPage = () => {
   }
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={values => handleSendEmail(values)}
-        validationSchema={validationContact}
-      >
-        {({ errors, touched }) => (
-          <Form>
-            <BottomBar>
-              <Input
-                type="text"
-                name="name"
-                placeholder="Name"
-                maxLength={25}
-                onClick={() => {
-                  setNameError('bottom-bar name-active')
-                }}
-              />
-              {touched.name ? (
-                <div className="bottom-bar name-active" />
-              ) : (
-                <div className={nameError} />
-              )}
-              {errors.name && touched.name ? (
-                <div className="bottom-bar name-red" />
-              ) : null}
-            </BottomBar>
-            <BottomBar>
-              <Input
-                type="email"
-                name="email"
-                placeholder="Email"
-                maxLength={50}
-                onClick={() => {
-                  setEmailError('bottom-bar email-active')
-                }}
-              />
-              {touched.email ? (
-                <div className="bottom-bar email-active" />
-              ) : (
-                <div className={emailError} />
-              )}
-              {errors.email && touched.email ? (
-                <div className="bottom-bar email-red" />
-              ) : null}
-            </BottomBar>
-            <BottomBar>
-              <Input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                maxLength={50}
-                onClick={() => {
-                  setSubjectError('bottom-bar subject-active')
-                }}
-              />
-              {touched.subject ? (
-                <div className="bottom-bar subject-active" />
-              ) : (
-                <div className={subjectError} />
-              )}
-              {errors.subject && touched.subject ? (
-                <div className="bottom-bar subject-red" />
-              ) : null}
-            </BottomBar>
-            <BottomBar>
-              <Input
-                component="textarea"
-                className="text-area"
-                name="message"
-                placeholder="Message"
-                maxLength={500}
-                onClick={() => {
-                  setMessageError('bottom-bar message-active')
-                }}
-              />
-              {touched.message ? (
-                <div className="bottom-bar message-active" />
-              ) : (
-                <div className={messageError} />
-              )}
-              {errors.message && touched.message ? (
-                <div className="bottom-bar message-red" />
-              ) : null}
-            </BottomBar>
-            <Btn type="submit">Submit</Btn>
-          </Form>
-        )}
-      </Formik>
-    </>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={values => handleSendEmail(values)}
+      validationSchema={validationContact}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <div className="contact-bottom-bar">
+            <Field
+              type="text"
+              name="name"
+              placeholder="Name"
+              maxLength={25}
+              className="contact-input"
+              onClick={() => {
+                setNameError('bottom-bar name-active')
+              }}
+            />
+            {touched.name ? (
+              <div className="bottom-bar name-active" />
+            ) : (
+              <div className={nameError} />
+            )}
+            {errors.name && touched.name ? (
+              <div className="bottom-bar name-red" />
+            ) : null}
+          </div>
+          <div className="contact-bottom-bar">
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email"
+              maxLength={50}
+              className="contact-input"
+              onClick={() => {
+                setEmailError('bottom-bar email-active')
+              }}
+            />
+            {touched.email ? (
+              <div className="bottom-bar email-active" />
+            ) : (
+              <div className={emailError} />
+            )}
+            {errors.email && touched.email ? (
+              <div className="bottom-bar email-red" />
+            ) : null}
+          </div>
+          <div className="contact-bottom-bar">
+            <Field
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              maxLength={50}
+              className="contact-input"
+              onClick={() => {
+                setSubjectError('bottom-bar subject-active')
+              }}
+            />
+            {touched.subject ? (
+              <div className="bottom-bar subject-active" />
+            ) : (
+              <div className={subjectError} />
+            )}
+            {errors.subject && touched.subject ? (
+              <div className="bottom-bar subject-red" />
+            ) : null}
+          </div>
+          <div className="contact-bottom-bar">
+            <Field
+              as="textarea"
+              className="contact-input text-area"
+              name="message"
+              placeholder="Message"
+              maxLength={500}
+              onClick={() => {
+                setMessageError('bottom-bar message-active')
+              }}
+            />
+            {touched.message ? (
+              <div className="bottom-bar message-active" />
+            ) : (
+              <div className={messageError} />
+            )}
+            {errors.message && touched.message ? (
+              <div className="bottom-bar message-red" />
+            ) : null}
+          </div>
+          <button type="submit" className="contact-btn">
+            Submit
+          </button>
+        </Form>
+      )}
+    </Formik>
   )
 }
 

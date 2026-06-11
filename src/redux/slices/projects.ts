@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { AppDispatch, AppThunk } from '../store'
 
-interface TechnologiesProps {
+export interface TechnologiesProps {
   name: string
   url: string
   alt: string
 }
 
-interface Props {
+export interface ProjectProps {
   key: string
   title: string
   description: string
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export type DataProps = {
-  data: Props[]
+  data?: ProjectProps[]
   isLoading: boolean
   error: boolean
 }
@@ -61,7 +61,7 @@ export function asyncSetProjects(): AppThunk {
         dispatch(setProjectsData(res.data))
         dispatch(loadingSuccess())
       })
-      .catch(err => dispatch(loadingFail()))
+      .catch(_err => dispatch(loadingFail()))
   }
 }
 

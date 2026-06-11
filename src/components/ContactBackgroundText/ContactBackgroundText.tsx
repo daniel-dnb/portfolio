@@ -1,39 +1,39 @@
-import { NextPage } from 'next'
-import { BackgroundText, TextColor } from './styles'
+import type { FC, PropsWithChildren } from 'react'
+import { BackgroundText, TextColor } from '../../theme/backgroundText'
 
-const ContactBackgroundText: NextPage = ({ children }) => {
+const ContactBackgroundText: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <BackgroundText>
         import
-        <TextColor Color="white">{' React'}</TextColor> from{' '}
-        <TextColor Color="yellow">{"'react'"}</TextColor>
+        <TextColor color="white">{' React'}</TextColor> from{' '}
+        <TextColor color="yellow">{"'react'"}</TextColor>
         <br />
         <br />
         const
-        <TextColor Color="blue"> Contact</TextColor>:{' '}
-        <TextColor Color="purple">React.FC</TextColor> ={' '}
-        <TextColor Color="yellow">{'()'}</TextColor> {'=>'}{' '}
-        <TextColor Color="yellow">{'{'}</TextColor>
+        <TextColor color="blue"> Contact</TextColor>:{' '}
+        <TextColor color="purple">React.FC</TextColor> ={' '}
+        <TextColor color="yellow">{'()'}</TextColor> {'=>'}{' '}
+        <TextColor color="yellow">{'{'}</TextColor>
         <br />
         &nbsp;&nbsp;{'return ('}
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <TextColor Color="white">{'<'}</TextColor>div
-        <TextColor Color="white">{'>'}</TextColor>
+        <TextColor color="white">{'<'}</TextColor>div
+        <TextColor color="white">{'>'}</TextColor>
         <br />
         {children}
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <TextColor Color="white">{'</'}</TextColor>div
-        <TextColor Color="white">{'>'}</TextColor>
+        <TextColor color="white">{'</'}</TextColor>div
+        <TextColor color="white">{'>'}</TextColor>
         <br />
         &nbsp;&nbsp;{')'}
         <br />
-        <TextColor Color="yellow">{'}'}</TextColor>
+        <TextColor color="yellow">{'}'}</TextColor>
         <br />
         <br />
         export default
-        <TextColor Color="blue"> Contact</TextColor>
+        <TextColor color="blue"> Contact</TextColor>
       </BackgroundText>
     </>
   )

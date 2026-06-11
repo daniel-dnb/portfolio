@@ -1,11 +1,16 @@
-import React from 'react'
+import { Component } from 'react'
+import type { ReactNode } from 'react'
 
-class ErrorBoundary extends React.Component {
+type ErrorBoundaryProps = {
+  children: ReactNode
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps> {
   state = {
     hasError: false
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error: Error) {
     return { hasError: true }
   }
 

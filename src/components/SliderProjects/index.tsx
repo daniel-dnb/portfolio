@@ -1,27 +1,19 @@
 import { useEffect, useState } from 'react'
+import type { FC } from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 import { RootState, useAppDispatch, useAppSelector } from '../../redux/store'
-import { asyncSetProjects, DataProps } from '../../redux/slices/projects'
-import ProjectsModal from '../ProjectsModal'
 import {
-  Animation,
-  Circle,
-  Container,
-  CoverIMG,
-  ErrorContainer,
-  ErrorText,
-  Loading,
-  LoadingContainer,
-  LoadingText,
-  SliderBox,
-  TitleIMG
-} from './styles'
+  asyncSetProjects,
+  DataProps,
+  ProjectProps
+} from '../../redux/slices/projects'
+import ProjectsModal from '../ProjectsModal'
 
-const SliderProjects: React.FC = (props: any) => {
+const SliderProjects: FC = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
-  const [modalInfos, setModalInfos] = useState()
+  const [modalInfos, setModalInfos] = useState<ProjectProps | null>(null)
   const dispatch = useAppDispatch()
   const projects: DataProps = useAppSelector(
     (state: RootState) => state.projects
@@ -33,7 +25,7 @@ const SliderProjects: React.FC = (props: any) => {
     }
   }, [])
 
-  function handleOpenModal({ data }) {
+  function handleOpenModal({ data }: { data: ProjectProps }) {
     setIsModalVisible(true)
     setModalInfos(data)
   }
@@ -56,7 +48,7 @@ const SliderProjects: React.FC = (props: any) => {
     slidesToShow: 3,
     slidesToScroll: 1,
     dotsClass: 'slick-dots custom-indicator',
-    customPaging: i => <Circle>{i}</Circle>,
+    customPaging: (i: number) => <span className="slider-dot">{i}</span>,
     responsive: [
       {
         breakpoint: 768,
@@ -80,52 +72,51 @@ const SliderProjects: React.FC = (props: any) => {
 
   if (projects.isLoading) {
     return (
-      <LoadingContainer>
-        <Loading />
-        <LoadingText>
-          Loading<Animation>...</Animation>
-        </LoadingText>
-      </LoadingContainer>
+      <div className="flex flex-col items-center justify-center gap-4 py-12">
+        <div className="slider-loading" />
+        <p className="font-ubuntu text-[2rem] text-text">
+          Loading<span className="console-typewriter console-anim-1">...</span>
+        </p>
+      </div>
     )
   }
+
   if (projects.error === true) {
     return (
-      <>
-        <ErrorContainer>
-          <img src="/PageNotFound.png" />
-          <ErrorText>
-            The page you’re looking for is currently under maintenance and will
-            be back soon.
-          </ErrorText>
-        </ErrorContainer>
-      </>
-    )
-  } else {
-    return (
-      <Container>
-        {isModalVisible ? (
-          <ProjectsModal
-            OnClose={() => setIsModalVisible(false)}
-            data={modalInfos}
-          />
-        ) : null}
-        <Slider {...settings}>
-          {projects.data &&
-            projects.data.map(data => (
-              <SliderBox key={data.key}>
-                <span onClick={() => handleOpenModal({ data })}>
-                  <CoverIMG
-                    key={data.imgs[0]}
-                    bgIMG={"url('" + data.imgs[0] + "')"}
-                  />
-                  <TitleIMG key={data.title}>{data.title}</TitleIMG>
-                </span>
-              </SliderBox>
-            ))}
-        </Slider>
-      </Container>
+      <div className="flex flex-col items-center justify-center gap-8 py-12">
+        <img src="/PageNotFound.png" alt="Page not found" />
+        <p className="slider-error-text">
+          The page you’re looking for is currently under maintenance and will be
+          back soon.
+        </p>
+      </div>
     )
   }
+
+  return (
+    <div className="slider-projects">
+      {isModalVisible && modalInfos ? (
+        <ProjectsModal
+          OnClose={() => setIsModalVisible(false)}
+          data={modalInfos}
+        />
+      ) : null}
+      <Slider {...settings}>
+        {projects.data &&
+          projects.data.map(data => (
+            <div key={data.key}>
+              <span onClick={() => handleOpenModal({ data })}>
+                <div
+                  className="slider-cover"
+                  style={{ backgroundImage: `url('${data.imgs[0]}')` }}
+                />
+                <div className="slider-title">{data.title}</div>
+              </span>
+            </div>
+          ))}
+      </Slider>
+    </div>
+  )
 }
 
 export default SliderProjects

@@ -1,0 +1,1 @@
+import{a as e,c as t}from"./index-CSJHzCVV.js";var n=t(),r={white:`code-txt-white`,blue:`code-txt-blue`,purple:`code-txt-purple`,yellow:`code-txt-yellow`},i=({children:e})=>(0,n.jsx)(`div`,{className:`code-bg`,children:e}),a=({color:t,children:i})=>(0,n.jsx)(`span`,{className:e(r[t]),children:i});export{a as n,i as t};

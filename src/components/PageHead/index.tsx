@@ -1,34 +1,25 @@
-import { NextPage } from 'next'
-import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
+import type { FC, ReactNode } from 'react'
+import { useEffect } from 'react'
 
 interface PageHeadProps {
   title: string
   description: string
+  children: ReactNode
 }
 
-const PageHead: NextPage<PageHeadProps> = ({
+const PageHead: FC<PageHeadProps> = ({
   title,
   description,
   children
 }) => {
-  const router = useRouter()
-  const url = `https://www.danielbnd.com${router.pathname}`
+  useEffect(() => {
+    document.title = title
 
-  return (
-    <>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          url,
-          title
-        }}
-      />
-      {children}
-    </>
-  )
+    const metaDescription = document.querySelector('meta[name="description"]')
+    metaDescription?.setAttribute('content', description)
+  }, [description, title])
+
+  return <>{children}</>
 }
 
 export default PageHead

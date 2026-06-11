@@ -1,25 +1,24 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { Link, useRouterState } from '@tanstack/react-router'
+import type { ComponentType, FC, SVGProps } from 'react'
 import { useContext, useEffect, useState } from 'react'
+import GithubSVG from '../../assets/Github.svg'
+import InstagramSVG from '../../assets/Instagram.svg'
+import LinkedinSVG from '../../assets/Linkedin.svg'
 import { MenuContext } from '../../contexts/MenuContext'
-import {
-  Avatar,
-  Container,
-  Github,
-  Instagram,
-  Linkedin,
-  Menu,
-  MobileMenu,
-  MobileMenuLines,
-  Nav,
-  SocialMedias,
-  Title,
-  TitleUnderline
-} from './styles'
+import { cn } from '../../lib/cn'
 
-const SideBar: React.FC = () => {
-  const router = useRouter()
+const Linkedin = LinkedinSVG as unknown as ComponentType<
+  SVGProps<SVGSVGElement>
+>
+const Github = GithubSVG as unknown as ComponentType<SVGProps<SVGSVGElement>>
+const Instagram = InstagramSVG as unknown as ComponentType<
+  SVGProps<SVGSVGElement>
+>
+
+const SideBar: FC = () => {
+  const pathname = useRouterState({
+    select: state => state.location.pathname
+  })
   const { isMenuActive, activeMenu } = useContext(MenuContext)
   const [isNavBarShowing, setIsNavBarShowing] = useState(true)
 
@@ -27,7 +26,7 @@ const SideBar: React.FC = () => {
     if (isMenuActive) {
       activeMenu()
     }
-  }, [router.pathname])
+  }, [pathname])
 
   useEffect(() => {
     if (isMenuActive) {
@@ -37,7 +36,11 @@ const SideBar: React.FC = () => {
     document.body.style.overflow = ''
   }, [isMenuActive])
 
-  if (typeof window !== 'undefined') {
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
     let scrollPos = 0
     const changeSize = () => {
       if (document.body.getBoundingClientRect().top > scrollPos) {
@@ -51,72 +54,79 @@ const SideBar: React.FC = () => {
       }
     }
 
-    useEffect(() => {
-      window.addEventListener('scroll', changeSize)
-      return () => {
-        window.removeEventListener('scroll', changeSize)
-      }
-    }, [])
-  }
+    window.addEventListener('scroll', changeSize)
+    return () => {
+      window.removeEventListener('scroll', changeSize)
+    }
+  }, [])
 
   return (
-    <Container isMenuActive={isMenuActive} isNavBarShowing={isNavBarShowing}>
-      <Avatar>
-        <Image
+    <div
+      className={cn(
+        'sidebar',
+        isMenuActive && 'sidebar--open',
+        !isNavBarShowing && 'sidebar--hidden'
+      )}
+    >
+      <div className="sidebar-avatar">
+        <img
           src="/avatar.png"
           alt="Avatar picture"
           width={200}
           height={200}
         />
-      </Avatar>
+      </div>
 
-      <Menu>
-        <Title>Daniel Bernardes</Title>
-        <TitleUnderline />
+      <div className="sidebar-menu">
+        <h1 className="sidebar-title">Daniel Bernardes</h1>
+        <div className="sidebar-title-underline" />
 
-        <MobileMenu
+        <div
+          className={cn(
+            'sidebar-mobile-menu',
+            isMenuActive && 'sidebar-mobile-menu--open'
+          )}
           onClick={() => activeMenu()}
-          status={isMenuActive ? 'open' : 'close'}
         >
-          <MobileMenuLines />
-        </MobileMenu>
-      </Menu>
+          <div className="sidebar-mobile-lines" />
+        </div>
+      </div>
 
-      <Nav>
-        <li className={router.pathname == '/' ? 'active' : ''}>
+      <ul className="sidebar-nav">
+        <li className={pathname == '/' ? 'active' : ''}>
           <span onClick={() => activeMenu()}>
-            <Link href="/">Home</Link>
+            <Link to="/">Home</Link>
           </span>
         </li>
-        <li className={router.pathname == '/projects' ? 'active' : ''}>
+        <li className={pathname == '/projects' ? 'active' : ''}>
           <span onClick={() => activeMenu()}>
-            <Link href="/projects">Projects</Link>
+            <Link to="/projects">Projects</Link>
           </span>
         </li>
-        <li className={router.pathname == '/about' ? 'active' : ''}>
+        <li className={pathname == '/about' ? 'active' : ''}>
           <span onClick={() => activeMenu()}>
-            <Link href="/about">About</Link>
+            <Link to="/about">About</Link>
           </span>
         </li>
-        <li className={router.pathname == '/contact' ? 'active' : ''}>
+        <li className={pathname == '/contact' ? 'active' : ''}>
           <span onClick={() => activeMenu()}>
-            <Link href="/contact">Contact</Link>
+            <Link to="/contact">Contact</Link>
           </span>
         </li>
-      </Nav>
+      </ul>
 
-      <SocialMedias>
+      <div className="sidebar-social">
         <a href="https://www.linkedin.com/in/daniel-dnb/" target="_blank">
-          <Linkedin />
+          <Linkedin className="sidebar-social-icon" />
         </a>
         <a href="https://github.com/daniel-dnb/" target="_blank">
-          <Github />
+          <Github className="sidebar-social-icon" />
         </a>
         <a href="https://www.instagram.com/dann_dnb/" target="_blank">
-          <Instagram />
+          <Instagram className="sidebar-social-icon" />
         </a>
-      </SocialMedias>
-    </Container>
+      </div>
+    </div>
   )
 }
 

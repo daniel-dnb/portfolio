@@ -1,85 +1,84 @@
-import { useContext } from 'react'
-
-import { useRouter } from 'next/router'
-import { signOut, useSession } from 'next-auth/react'
-
-import { MenuContext } from '../../contexts/MenuContext'
+import { useNavigate, useRouterState } from '@tanstack/react-router'
+import type { ComponentType, FC, PropsWithChildren } from 'react'
 import ReactIMG from '../../assets/React.svg'
-import {
-  CicleYellow,
-  CircleGreen,
-  CircleRed,
-  Container,
-  NavButtons,
-  PageContainer,
-  PageNavigation,
-  PageUrl,
-  TopBar,
-  TopBarTitle
-} from './styles'
+import { authClient } from '../../lib/auth-client'
 
-const PageBackground: React.FC = props => {
-  const router = useRouter()
-  const { isMenuActive } = useContext(MenuContext)
-
-  const { data: session } = useSession()
+const PageBackground: FC<PropsWithChildren> = props => {
+  const ReactIcon = ReactIMG as unknown as ComponentType<{
+    className?: string
+  }>
+  const navigate = useNavigate()
+  const pathname = useRouterState({
+    select: state => state.location.pathname
+  })
+  const { data: session } = authClient.useSession()
 
   return (
-    <Container isMenuActive={isMenuActive}>
-      <TopBar>
-        <NavButtons>
-          {session ? <CircleRed onClick={() => signOut()} /> : <CircleRed />}
-          <CicleYellow />
-          <CircleGreen onClick={() => router.push('/signin')} />
-        </NavButtons>
-        <TopBarTitle>
-          {router.pathname == '/' ? 'index' : router.pathname.replace('/', '')}
+    <div className="page-bg">
+      <div className="page-topbar">
+        <div className="page-nav-buttons">
+          {session ? (
+            <div
+              className="traffic-light traffic-light--red"
+              onClick={() => authClient.signOut()}
+            />
+          ) : (
+            <div className="traffic-light traffic-light--red" />
+          )}
+          <div className="traffic-light traffic-light--yellow" />
+          <div
+            className="traffic-light traffic-light--green"
+            onClick={() => navigate({ to: '/signin' })}
+          />
+        </div>
+        <div className="page-topbar-title">
+          {pathname == '/' ? 'index' : pathname.replace('/', '')}
           .tsx - portfolio - Visual Studio Code
-        </TopBarTitle>
-      </TopBar>
-      <PageContainer>
-        <PageNavigation>
-          <li className={router.pathname == '/' ? 'home active' : 'home'}>
-            <ReactIMG className="react-img" />
+        </div>
+      </div>
+      <div className="page-content">
+        <ul className="page-tabs">
+          <li className={pathname == '/' ? 'home active' : 'home'}>
+            <ReactIcon className="react-img" />
             <span>index.tsx</span>
           </li>
           <li
             className={
-              router.pathname == '/projects' ? 'projects active' : 'projects'
+              pathname == '/projects' ? 'projects active' : 'projects'
             }
           >
-            <ReactIMG className="react-img" />
+            <ReactIcon className="react-img" />
             <span>projects.tsx</span>
           </li>
           <li
-            className={router.pathname == '/about' ? 'about active' : 'about'}
+            className={pathname == '/about' ? 'about active' : 'about'}
           >
-            <ReactIMG className="react-img" />
+            <ReactIcon className="react-img" />
             <span>about.tsx</span>
           </li>
           <li
             className={
-              router.pathname == '/contact' ? 'contact active' : 'contact'
+              pathname == '/contact' ? 'contact active' : 'contact'
             }
           >
-            <ReactIMG className="react-img" />
+            <ReactIcon className="react-img" />
             <span>contact.tsx</span>
           </li>
-        </PageNavigation>
+        </ul>
 
-        <PageUrl>
+        <div className="page-url">
           <span>{'src > pages > '}</span>
-          <ReactIMG className="react-img-url" />
+          <ReactIcon className="react-img-url" />
           <span>
-            {router.pathname == '/' ? ' index.tsx' : ''}
-            {router.pathname == '/projects' ? ' projects.tsx' : ''}
-            {router.pathname == '/about' ? ' about.tsx' : ''}
-            {router.pathname == '/contact' ? ' contact.tsx' : ''}
+            {pathname == '/' ? ' index.tsx' : ''}
+            {pathname == '/projects' ? ' projects.tsx' : ''}
+            {pathname == '/about' ? ' about.tsx' : ''}
+            {pathname == '/contact' ? ' contact.tsx' : ''}
           </span>
-        </PageUrl>
+        </div>
         {props.children}
-      </PageContainer>
-    </Container>
+      </div>
+    </div>
   )
 }
 

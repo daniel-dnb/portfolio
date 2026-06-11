@@ -1,16 +1,16 @@
-import { NextPage } from 'next'
-import { TextColor } from './styles'
+import type { FC, PropsWithChildren } from 'react'
+import { TextColor } from '../../theme/backgroundText'
 
-const FormBox: NextPage = ({ children }) => {
+const FormBox: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <TextColor Color="white">{'<'}</TextColor>form
-      <TextColor Color="white">{'>'}</TextColor>
+      <TextColor color="white">{'<'}</TextColor>form
+      <TextColor color="white">{'>'}</TextColor>
       {children}
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <TextColor Color="white">{'</'}</TextColor>form
-      <TextColor Color="white">{'>'}</TextColor>
+      <TextColor color="white">{'</'}</TextColor>form
+      <TextColor color="white">{'>'}</TextColor>
       <br />
     </div>
   )
